@@ -67,7 +67,7 @@ project_root/
 
 Excercise: 
 
-    - Discuss what happens if you need to process 1,000 files.
+- Discuss what happens if you need to process 1,000 files.
 
 ### Sequential Processing: One Job Handles Many Files
 
@@ -77,7 +77,7 @@ Excercise:
 
 Exercise: 
 
-    - Discuss what happens if the job fails partway through.
+- Discuss what happens if the job fails partway through.
 
 ### Checkpointing for Fault Tolerance
 
@@ -99,16 +99,18 @@ Exercise:
 - Highly efficient for large datasets.
 
 Exercise:
-    - Discuss how to aggregate results.
-    - Discuss the limitations of job arrays on Yen-Slurm.
-    - Discuss the limitations of file system on the Yens.
+
+- Discuss how to aggregate results.
+- Discuss the limitations of job arrays on Yen-Slurm.
+- Discuss the limitations of file system on the Yens.
 
 ### Copy Results and Document Your Work
 Exercise:
-    - Use `scp` to copy your `results` directory back to your laptop.
-    - Write a short `README.md` describing:
+ 
+- Use `scp` to copy your `results` directory back to your laptop.
+- Write a short `README.md` describing:
 
-          - What the pipeline does
-          - How it runs (Slurm + Python)
-          - Where the results go
-          - How to rerun it with new data
+  - What the pipeline does
+  - How it runs (Slurm + Python)
+  - Where the results go
+  - How to rerun it with new data
