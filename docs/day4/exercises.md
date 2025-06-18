@@ -27,18 +27,16 @@ Here is a directory structure for this project:
 project_root/
 │
 ├── data/
-│   └── input/
-│       └── form_3_10.csv        # Input file to process
+│   └── form_3_10.csv        # Input file to process
 │
-├── results/                      # Processed outputs go here
+├── results/                  # Processed outputs go here
 │   └── (generated output files)
 │
 ├── scripts/
 │   ├── extract_form_3_one_file.py
 │   ├── extract_form_3_batch.py
 │   ├── extract_form_3_batch_checkpoint.py
-│   ├── extract_form_3_onefile_array.py
-│   └── utils.py          # (shared functions if needed)
+│   └── extract_form_3_onefile_array.py
 │
 ├── slurm/
 │   ├── extract_form_3_one_file.slurm
