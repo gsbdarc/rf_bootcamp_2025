@@ -24,7 +24,7 @@ On Day 4, we'll build up from a simple data extraction task to more scalable clu
 Here is a directory structure for this project:
 
 ```
-project_root/
+exercises/
 │
 ├── data/
 │   └── form_3_10.csv        # Input file to process
