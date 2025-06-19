@@ -29,8 +29,8 @@ project_root/
 ├── data/
 │   └── form_3_10.csv        # Input file to process
 │
-├── results/                  # Processed outputs go here
-│   └── (generated output files)
+├── results/                 # Processed outputs go here
+│   └── parsed_form3.json
 │
 ├── scripts/
 │   ├── extract_form_3_one_file.py
@@ -42,13 +42,12 @@ project_root/
 │   ├── extract_form_3_one_file.slurm
 │   ├── extract_form_3_batch.slurm
 │   ├── extract_form_3_batch_checkpoint.slurm
-│   └── extract_form_3_array.slurm
-│
-├── logs/
-│   ├── extract-one-file-758543.out
-│   ├── extract-batch-checkpoint-758547.out
-│   ├── extract-form-3-758549_0.out
-│   └── ...
+│   ├── extract_form_3_array.slurm
+│   │
+│   └── logs/                      # Slurm logs directory
+│       ├── extract-one-file-758543.out
+│       ├── extract-batch-checkpoint-758547.out
+│       └── extract-form-3-758549_0 
 │
 ├── venv/                  # Virtual environment
 ├── requirements.txt       # Python dependencies
