@@ -13,5 +13,5 @@ venv/
 results/
 
 # Logs
-slurm/logs/
+**/slurm/logs/
 
