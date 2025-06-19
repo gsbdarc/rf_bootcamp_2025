@@ -10,18 +10,13 @@ from dotenv import load_dotenv
 load_dotenv("/zfs/projects/darc/rf_bootcamp_2025/.env")
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-PROJ_DIR = "/zfs/projects/darc/rf_bootcamp_2025"
+PROJ_DIR = "/zfs/projects/darc/rf_bootcamp_2025/exercises"
 os.makedirs(f"{PROJ_DIR}/results", exist_ok=True)
 
 # Output file path (single master file)
 master_json_path = f"{PROJ_DIR}/results/parsed_form3.json"
 
-# Load existing checkpoint if exists
-if os.path.exists(master_json_path):
-    with open(master_json_path, "r") as f:
-        master_data = json.load(f)
-else:
-    master_data = {}
+master_data = {}
 
 # Pydantic model for parsing
 class Form3Filing(BaseModel):
@@ -60,10 +55,6 @@ for idx, row in df.iterrows():
     # Use full filing_path as key
     filing_key = filing_path
 
-    if filing_key in master_data:
-        print(f"[{idx+1}/{len(df)}] Skipping already processed: {filing_key}")
-        continue
-
     print(f"[{idx+1}/{total_files}] Processing: {filing_path}")
 
     with open(filing_path, "r") as f:
@@ -84,7 +75,8 @@ for idx, row in df.iterrows():
     # Store result
     master_data[filing_key] = filing.model_dump()
 
-    print(f"Processed {filing_key}")
-    with open(master_json_path, "w") as f:
-        json.dump(master_data, f, indent=2)
+print("All filings processed. Writing output...")
+with open(master_json_path, "w") as f:
+    json.dump(master_data, f, indent=2)
 print(f"Saved result to {master_json_path}.")
+

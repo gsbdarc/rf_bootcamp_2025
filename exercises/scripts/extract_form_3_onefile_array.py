@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 load_dotenv("/zfs/projects/darc/rf_bootcamp_2025/.env")
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-PROJ_DIR = "/zfs/projects/darc/rf_bootcamp_2025"
+PROJ_DIR = "/zfs/projects/darc/rf_bootcamp_2025/exercises"
 os.makedirs(f"{PROJ_DIR}/results/array", exist_ok=True)
 
 # Model
