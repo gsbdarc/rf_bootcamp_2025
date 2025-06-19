@@ -47,7 +47,7 @@ project_root/
 │   └── logs/                      # Slurm logs directory
 │       ├── extract-one-file-758543.out
 │       ├── extract-batch-checkpoint-758547.out
-│       └── extract-form-3-758549_0 
+│       └── extract-form-3-758549_0.out 
 │
 ├── venv/                  # Virtual environment
 ├── requirements.txt       # Python dependencies

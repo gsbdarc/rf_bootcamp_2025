@@ -14,7 +14,7 @@ PROJ_DIR = "/zfs/projects/darc/rf_bootcamp_2025"
 os.makedirs(f"{PROJ_DIR}/results", exist_ok=True)
 
 # Output file path (single master file)
-master_json_path = "{PROJ_DIR}/results/parsed_form3.json"
+master_json_path = f"{PROJ_DIR}/results/parsed_form3.json"
 
 # Load existing checkpoint if exists
 if os.path.exists(master_json_path):
