@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+
+# Environment files
+.env
+**/.env
+
+# Results
+results/
+
+# Logs
+**/slurm/logs/
+
