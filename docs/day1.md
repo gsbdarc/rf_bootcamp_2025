@@ -9,7 +9,7 @@ updateDate: 2025-06-17
 # {{ page.title }}
 
 
-Welcome to the first day of our journey! Today, we will cover the basics of our computing system the Yens. We'll start with logging in, understanding the file system, and learning how to navigate through it. We'll end with a hands on exercise which will help solify your understanding and get you comfortable with the system.
+Welcome to the first day of our journey! Today, we will cover the basics of our computing system the Yens. We'll start with logging in, understanding the file system, and learning how to navigate through it. We'll end with a hands on exercise which will help solidify your understanding and get you comfortable with the system.
 
 
 ## The Yens 
@@ -19,7 +19,7 @@ The computing cluster is called the Yens. Its a powerful system with 5 interacti
 Today we are going to focus on the interactive nodes.
 
 
-### Excersise 1: Logging into the Yens
+### Exercises 1: Logging into the Yens
 
 To log into the Yens, you will need to use SSH (Secure Shell). Open your terminal and type the following command:
 
@@ -38,7 +38,7 @@ You will need to Duo authenticate. You WILL NEED to Duo authenticate to log in
 
 challenge
 log into a specific node
-    [Check out our website]](https://rcpedia-dev.stanford.edu/_getting_started/how_access_yens/)
+    [Check out our website](https://rcpedia-dev.stanford.edu/_getting_started/how_access_yens/)
 
 ### Navigating the File System
 
@@ -97,7 +97,7 @@ that because the file system is **shared across all the the nodes on the yens**
 
 Now lets unzip the files on the Yens and complete some challenges:
 
-## 🔰 Task 1: Move all Rock-type Pokémon to a folder
+## 🔰 Task 1: Move all Rock-type Pokémon to a folder (Easy)
 🧠 Focus: Use of wildcards (*) and the mv command.
 
 💪 Challenge:
@@ -155,7 +155,7 @@ for file in *_*_*_*.png; do
 done
 ```
 
-🔰 Task 5: Group by primary type (dynamic folder creation)
+## 🔰 Task 5: Group by primary type (dynamic folder creation)(Hard)
 
 🧠 Focus: Bash parameter expansion and scripting
 
@@ -170,7 +170,7 @@ for file in *.png; do
 done
 ```
 
-🔰 Task 7: Handle special forms (like aegislash-blade or pumpkaboo-average)
+## 🔰 Task 6: Handle special forms (like aegislash-blade or pumpkaboo-average)
 
 🧠 Focus: Handling dashes in names
 
