@@ -1,0 +1,69 @@
+Exercise 1.1 Solutions 
+
+This is different than the python which is displayed when you SSH in
+
+
+Exercise 1.2. Solutions 
+
+import os
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Define representative colors for each Pokémon type
+type_colors = {
+    'Water': '#6890F0',
+    'Normal': '#A8A878',
+    'Grass': '#78C850',
+    'Bug': '#A8B820',
+    'Psychic': '#F85888',
+    'Fire': '#F08030',
+    'Electric': '#F8D030',
+    'Poison': '#A040A0',
+    'Ground': '#E0C068',
+    'Dark': '#705848',
+    'Fighting': '#C03028',
+    'Dragon': '#7038F8',
+    'Ghost': '#705898',
+    'Steel': '#B8B8D0',
+    'Ice': '#98D8D8',
+    'Fairy': '#EE99AC',
+    'Flying': '#A890F0',
+    'none': '#CCCCCC'
+}
+
+# Replace with the path to your directory of Pokémon images
+oslist = os.listdir(`path/to/your/pokemon/images`)
+
+# Parse metadata from filenames
+records = []
+for filename in oslist:
+    if filename.endswith('.png'):
+        name, primary_type, secondary_type, evolution = filename.replace('.png', '').split('_')
+        records.append((name, primary_type, secondary_type, evolution))
+
+# Create a DataFrame
+df = pd.DataFrame(records, columns=['name', 'primary_type', 'secondary_type', 'evolution'])
+
+# Count by primary type
+type_counts = df['secondary_type'].value_counts().reset_index()
+type_counts.columns = ['secondary_type', 'count']
+
+
+print(type_counts)
+# Plot using seaborn
+plt.figure(figsize=(12, 6))
+sns.barplot(
+    data=type_counts,
+    x='secondary_type',
+    y='count',
+    hue='secondary_type',
+    palette=type_colors,
+    legend=False
+)
+plt.title('Pokémon Counts by Secondary Type')
+plt.xlabel('Secondary Type')
+plt.ylabel('Count')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()

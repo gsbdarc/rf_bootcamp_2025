@@ -1,0 +1,26 @@
+Exercise 1 
+
+mkdir rock
+mv *_Rock_* rock/
+
+
+Exercise 2
+mkdir flying
+cp *_*_Flying_* flying/
+
+
+Exercise 3
+20K guzzlord_Dark_Dragon_none.png
+1.5K tynamo_Electric_none_none.png
+
+ls -lhS
+Bonus Exercise
+ls -lhS | head -n 2
+
+Explanation:
+| — Pipe Operator
+Purpose: Takes the output of one command and sends it as input to another command..
+
+
+Challenge Exercise
+ls | cut -d "_" -f2,3 | sort |uniq -c | sort -n | grep ' 1 '

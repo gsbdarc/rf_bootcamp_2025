@@ -264,6 +264,12 @@ gsbbrowser
 **Important point**: You should be able to ssh into any one of the interactive nodes and the file should be there.
 that because the file system is **shared across all the the nodes on the yens**
 
+Find which python version is installed on the Yens. You can do this by running the following command:
+
+```bash
+which python3
+```
+
 ## Yens Challenge:
 
 log into a specific node
