@@ -25,7 +25,7 @@ Today we take your interactive work and transition it into Slurm cluster jobs. W
 
 We'll whiteboard these concepts to build intuition:
 
-- CPUs / Cores: How many cores are available? How many does your job actually use?
+- CPUs (Cores): How many cores are available? How many does your job actually use?
 
 - RAM (Memory): How much memory does your job need?
 
@@ -45,7 +45,7 @@ We'll whiteboard these concepts to build intuition:
 
 Exercise:
 
-- Run your script again interactively while monitoring CPU and RAM usage with top or htop.
+- Run your script again interactively while monitoring CPU and RAM usage with `top` or `htop` and `userload`.
 
 - How much RAM and CPU does your job actually need?
 
