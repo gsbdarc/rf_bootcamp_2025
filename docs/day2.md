@@ -26,9 +26,18 @@ We finish with a hands‑on exercise to reinforce each skill.
 
 ---
 
+### Exercise 0: Log in using `ssh`
+
+Open a local terminal and use `ssh` to connect to the Yens.
+
+- What server are you on?
+- What directory are you in?
+- What files are in your current directory?
+- Do you see the files from yesterday?
+
 ### Exercise 1: Accessing JupyterHub
 
-#### 1: Open the Hub
+##### 1: Open the Hub
 
 Choose any of the following links to access JupyterHub on the Yens cluster:
 
@@ -40,13 +49,13 @@ Choose any of the following links to access JupyterHub on the Yens cluster:
 
 You should see the folders you created on the previous day, including your exercise notebooks.
 
-#### 2: Start a New Notebook and Terminal
+##### 2: Start a New Notebook and Terminal
 - Click the **blue “+”** to open a **Python 3 notebook**.
 
 - Click the **Terminal** icon to launch a shell (we’ll use it for environment commands).
 
 
-### Exercise 1.1 -First Notebook Cells
+#### Exercise 1.1 -First Notebook Cells
 
 Copy each of the following into separate cells in your notebook, then run them using `Shift + Enter.`
 
@@ -70,7 +79,7 @@ print(sum(numbers))
 
 
 
-### Exercise 1.2 — Jupyter Terminal Basics
+#### Exercise 1.2 — Jupyter Terminal Basics
 
 Open the terminal tab you started above and try:
 
@@ -88,9 +97,9 @@ ls
 which python3
 ```
 
-### Exercise 1.3: — Display a Pokémon Image
+#### Exercise 1.3: — Display a Pokémon Image
 
-1. Locate any PNG in your images folder (use the file browser or ls).
+1. Locate any PNG in your images folder (use the file browser or ls). Tip: You can double click on it to view it natively in JupyterHub.
 
 2. Replace /path/to/your/pokemon_image.png below with that full path.
 
@@ -105,13 +114,40 @@ plt.axis('off')  # Hide axes
 plt.show()
 ```
 
-Note: If you get an error about the libary not being installed, you can install it in your terminal with:
+#### Exercise 1.4: — Manipulate an image on the terminal
+
+1. Let's manipulate an image on the terminal using a tool called `imagemagick`.
+
+Go to your terminal and type:
+
+```bash
+module load imagemagick
+```
+
+Pick the Pokemon you displayed above and flip it upside down like this:
+
+```bash
+magick /path/to/your/pokemon_image.png -flip /path/to/your/output_image.png
+```
+
+2. Did it work? Go check in your notebook.
+
+3. Type the following command in your terminal:
+
+```bash
+which magick
+```
+
+Does it look the same as when you did `which python3`? 
+
+<!-- 
+Note: If you get an error about the library not being installed, you can install it in your terminal with:
 
 ```bash
 pip install matplotlib
-```
+``` -->
 
-### Exercise 1.4 - Counts by Primary Type
+<!-- ### Exercise 1.4 - Counts by Primary Type
 
 In this exercise, we'll create a **bar chart** showing the count of Pokémon by their **primary type**, and then prompt you to think about how to visualize Pokémon images based on their **secondary type.**
 
@@ -179,10 +215,71 @@ plt.show()
 ### Challenge — Visualizing by Secondary Type
 
 How would you create a grid of Pokémon images grouped by their `secondary_type`?
+ -->
+
+
+### Exercise 2: Understand Paths
+
+Let's explore your own path, and see how it can change. Earlier, you ran, `module load imagemagick`, and typed `which magick`.
+
+#### Exercise 2.1
+
+In your terminal, type:
+
+```bash
+which python
+which magick
+echo $PATH
+```
+
+The `$PATH` (anything with a `$` in front, actually) is a *variable*. Find the python and magick programs in your `$PATH`. The command `echo` is just like print.
+
+#### Exercise 2.2
+
+We used `module load` to load the imagemagick module. Let's explore the module command more. Try the following:
+
+```bash
+module list
+```
+
+What is listed? Does it make sense?
+
+Now try this:
+
+```bash
+module unload imagemagick
+```
+
+Is `magick` there for you to use? Verify by trying the following:
+
+* running the command to flip your Pokemon image
+* using `which` to see if the command is available
+
+Take a look at your `$PATH` -- what changed?
+
+#### Exercise 2.3
+
+Let's think a little bit more about Python in particular. 
+
+* Go to the terminal within Jupyter. Which `python3` do you see? How do you know?
+* Go to the terminal you get from logging in with `ssh`. Which `python3` do you see? How do you know?
 
 
 
-### Exercise 2: Creating a Python Virtual Environment
+<!-- #### Optional Bonus Confusion
+
+Go back to your Jupyter Notebook, and run the following:
+
+```python
+import site
+print(site.getsitepackages())
+print(site.getusersitepackages())
+```
+
+This shows all the places Python looks for things that get installed. Compare this with Python on your terminal. -->
+
+
+### Exercise 3: Creating a Python Virtual Environment
 
 A Python virtual environment is a self-contained directory that includes its own Python installation and packages. It allows you to manage dependencies separately for different projects.
 
