@@ -122,6 +122,12 @@ Download the zip file from the link below:
 mv ~/Downloads/file.zip ~/Desktop/
 ```
 
+Lets make sure that the file isn't a zip bomb (a zip file that is actually a folder with a lot of files in it). 
+
+```bash
+unzip -l ~/Desktop/file.zip
+``` 
+
 Lets unzip the file in your local machine first: 
 ```bash
 cd ~/Desktop
@@ -275,7 +281,7 @@ which python3
 log into a specific node
     [Check out our website](https://rcpedia-dev.stanford.edu/_getting_started/how_access_yens/)
 
-## Yens Task 3: Clone the repository:
+<!-- ## Yens Task 3: Clone the repository:
 
 We won't be using git for the rest of the course, but we will use it to get the files for the next day.
 
@@ -284,4 +290,4 @@ We won't be using git for the rest of the course, but we will use it to get the 
 git clone https://github.com/gsbdarc/rf_bootcamp_2025.git
 ```
 
-This will create a folder called `rf_bootcamp_2025` in your home directory with all the files for the course.
+This will create a folder called `rf_bootcamp_2025` in your home directory with all the files for the course. -->
