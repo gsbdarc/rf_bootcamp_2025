@@ -62,10 +62,10 @@ ls           # List files
   
 ```bash
 pwd          # Print working directory
-ls -lah       # List all files, including hidden ones (those starting with a dot)
+ls -lah       # - l long file -a all files -h human readable
 ``` 
 
-`-a` is a flag that tells the `ls` command to show all files, including hidden ones (those starting with a dot). Many CLI commands have flags that modify their behavior. You can find more about these flags by checking the manual pages for each command. For example, you can type `man ls` to see the manual for the `ls` command. (hint: type `q` to exit the manual page)
+`-lah` is a flag that tells the `ls` command to show all files long format with human readable sizes, including hidden ones (those starting with a dot). Many CLI commands have flags that modify their behavior. You can find more about these flags by googling the command.
 
 
 #### **Movement**
@@ -108,7 +108,7 @@ These `rm` actions are permanent make sure you double check what you are removin
 - Put the file in a directory on your local machine, for example, in your Desktop folder. 
 
 ```bash
-mv ~/Downloads/file.zip ~/Desktop/
+mv ~/Downloads/data.zip ~/Desktop/
 ```
 
 Let's take a look inside the file before we unzip to get a sense of its' content
@@ -164,7 +164,7 @@ How do we organize these files into some manageable structure, without dragging 
 >The wildcard `*` can be used to match any characters in the file name. Example: `c*` will match any file that starts with c regardless of what comes after it, try the command `ls -d c*`
 
 
-## 🔰 Task 2: Move all Pokémon with secondary type “Flying”
+## 🔰 Task 2: Copy all Pokémon with secondary type “Flying”
 
 ### 🧠 Focus: Wildcards matching specific position (second type in slot 3).
 
@@ -172,6 +172,7 @@ How do we organize these files into some manageable structure, without dragging 
 
 #### **Copy** all files where the **second type** is “Flying” into a folder named flying/.
 
+# PUT EXAMPLE OF POKEMON
 
 ## 🔰 Task 3: Report the pokemon image with the largest file size
 
