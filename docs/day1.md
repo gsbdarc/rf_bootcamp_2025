@@ -2,7 +2,6 @@
 title: Day 1
 layout: page
 nav_order: 1
-has_children: true
 updateDate: 2025-06-17
 ---
 
@@ -28,7 +27,7 @@ updateDate: 2025-06-17
 
 ## The Yens and DARC
 
-The computing cluster is called the Yens. Its a powerful system with 5 interactive nodes, and 10 slurm nodes(7 CPU and 3 GPU). The Yens has a petabyte of storage and is more powerful than your laptop. Its designed to handle large computing tasks doing work in groups and helping you and your professors publish papers and do research.
+The computing cluster is called the Yens. It's a powerful system with (as of July 2025) 5 interactive nodes, and 10 SLURM nodes(7 CPU and 3 GPU). The Yens has a petabyte of storage and is more powerful than your laptop. It's designed to handle large computing tasks doing work in groups and helping you and your professors publish papers and do research.
 
 Today we are going to focus on the interactive nodes.
 
@@ -66,23 +65,23 @@ rm file.txt # Remove a file
 #### Investigation 
 
 - Find your current working directory and list the files in it.
-```bash
+``` bash
 pwd          # Print working directory
-ls          # List files
+ls           # List files
+```  
 - Determine if there are any hidden files in your current directory.
-
 ```bash
 pwd          # Print working directory
 ls -a       # List all files, including hidden ones (those starting with a dot)
 ``` 
 
--a is a flag that tells the `ls` command to show all files, including hidden ones (those starting with a dot). Many CLI commands have flags that modify their behavior. You can find more about these flags by checking the manual pages for each command. For example, you can type `man ls` to see the manual for the `ls` command. (hint: type `q` to exit the manual page)
+`-a` is a flag that tells the `ls` command to show all files, including hidden ones (those starting with a dot). Many CLI commands have flags that modify their behavior. You can find more about these flags by checking the manual pages for each command. For example, you can type `man ls` to see the manual for the `ls` command. (hint: type `q` to exit the manual page)
 
 
 #### Movement
 
 - Change directories to your Desktop or Documents folder.
-- Head back to your home directory. 
+- You can use the `cd` command to change directories. The `~` symbol represents your home directory, and you can use `..` to go up one level in the directory structure.
 
 ```bash
 cd ~/Desktop    # Once you type D try pressing tab to autocomplete or tab twice to see all options
@@ -122,13 +121,13 @@ Download the zip file from the link below:
 mv ~/Downloads/file.zip ~/Desktop/
 ```
 
-Lets make sure that the file isn't a zip bomb (a zip file that is actually a folder with a lot of files in it). 
+Let's make sure that the file isn't a zip bomb (a zip file that is actually a folder with a lot of files in it). We can do this by listing the contents of the zip file without extracting it. 
 
 ```bash
 unzip -l ~/Desktop/file.zip
 ``` 
 
-Lets unzip the file in your local machine first: 
+Lets unzip the file in your local machine: 
 ```bash
 cd ~/Desktop
 unzip ~/Desktop/file.zip -d ~/Desktop/  
@@ -164,14 +163,19 @@ How do we organize these files into some manageable structure, without dragging 
 
 💪 Challenge:
 
-Move all files that include _Rock_ as one of their types into a new folder called rock/.
+> Move all files that include _Rock_ as one of their types into a new folder called rock/.
 
-hint- the wildcard `*` can be used to match any characters in the file name.
-Example: `c*` will match any file that starts with c regardless of what comes after it.
 
-```bash
-ls c*
-``` 
+>[!NOTE]
+> The `mv` command is used to move files from one location to another. WE move here so we dont duplicate files. 
+
+
+>[!TIP]
+>the wildcard `*` can be used to match any characters in the file name.
+>Example: `c*` will match any file that starts with c regardless of what comes after it.
+>```bash
+>ls -d c*
+>``` 
 
 ## 🔰 Task 2: Move all Pokémon with secondary type “Flying”
 
@@ -179,34 +183,42 @@ ls c*
 
 💪 Challenge:
 
-**Copy** all files where the **second type** is “Flying” into a folder named flying/.
+>**Copy** all files where the **second type** is “Flying” into a folder named flying/.
 
 
 ## 🔰 Task 3: Report the pokemon image with the largest file size
 
 🧠 Focus: Understanding different flags you can use
 
-💪 Challenge: find the file which has the largest size, smallest size
-Bonus: craft a command that will only report the largest file size and name of the fole
+💪 Challenge: 
 
-Hint: This has to do with flags you can use with the 'ls' command 
+Find the file which has the largest size, smallest size
 
-Bonus Hint: The `head` command can be used to limit the output to the first line the `|` pipe operator can be used to pass the output of one command to another command.
+Bonus: craft a command that will only report the largest file size and name of the file
+
+>[!TIP] 
+>This has to do with flags you can use with the 'ls' command 
+
+>[!TIP]
+>The `head` command can be used to limit the output to the first line the `|` pipe operator can be used to pass the output of one command to another command.
 
 
 ## 🔰 Task 4: Make a file with all the water type Pokemon names
 🧠 Focus: Using grep to filter files based on content
-💪 Challenge: Create a **file** that contains the file names of all Water-type Pokémon.
 
-Hint: The `grep` command can be used to search for specific patterns in files. For example ls | grep "Dragon" will list all files that contain the word "Dragon" in their name. The  `>` operator can be used to redirect the output of a command to a file. `ls > all_files.txt` will save the output of the `ls` command to a file called `all_files.txt`.
+💪 Challenge: 
+
+>Create a **file** that contains the file names of all Water-type Pokémon.
+
+>[!TIP]
+>The `grep` command can be used to search for specific patterns in files. For example ls | grep "Dragon" will list all files that contain the word "Dragon" in their name. The  `>` operator can be used to redirect the output of a command to a file. `ls > all_files.txt` will save the output of the `ls` command to a file called `all_files.txt`.
 
 
 ## 🔰 Task 5: Challenge Task
 
-#### 🧪 Challenge
-Find the least common primary type among all Pokémon in the image set.
+ 💪💪💪 Challenge
+Find the least common primary type and secondary combination among all Pokémon in the image set.
 
-Your job:
 
 1. Extract the type from file names
 
@@ -221,23 +233,30 @@ Your job:
   ```
 3. Output the type(s) with the smallest count
 
-hint: You can use the `cut` command to extract the type from the file name, and then use the `sort` and `uniq` commands to count the frequency of each type. Then smartly search the output for those with only 1 type.
+>[!TIP]
+>You can use the `cut` command to extract the type from the file name, and then use the `sort` and `uniq` commands to count the frequency of each type. Then smartly search the output for those with only 1 type.
 
 
 # The Yens
+
+
+Use our website to help you answer and understand these next questions: [Rcpedia](https://rcpedia.stanford.edu/)
 
 ## Logging into the Yens 
 
 Use SSH in your terminal (replace <SUNetID>):
 
 ```bash
-ssh <SUNetID>@yen.stanford.edu
+ssh <SUNetID>@yens.stanford.edu
 ```
 
 Duo authentication is required.
 
 ## Yens Task 1: Explore your home folder
+
  Explore the Yens file systems. What are some different files and directories you see?
+
+ What are some of the hidden files you see?
 
 Here are some Yens specific commands to help you understand your home directory
 
@@ -250,6 +269,7 @@ ml avail # List all available modules on the Yens
 ```
 
 ## Yens Task 2:
+
  Open another terminal window and upload the zip file you downloaded earlier to the Yens.
 
 The `scp` command allows you to securely copy files between your local machine and the Yens.
@@ -260,26 +280,33 @@ scp /path/to/local/file.zip <SUNetID>@yens.stanford.edu:/
 
 Switch back to the Yens and the file should be in your home directory.
 
-Try running `gsbbrowser` to understand this news files effect on your system.
+Try running `gsbbrowser` to understand this new files effect on your system.
 
 ```bash
 gsbbrowser
 ```
 
-[!NOTE]
-**Important point**: You should be able to ssh into any one of the interactive nodes and the file should be there.
-that because the file system is **shared across all the the nodes on the yens**
+>[!NOTE]
+> **Important point**: You should be able to ssh into any one of the interactive nodes and the file should be there.
+that is because the file system is **shared across all the the nodes on the yens**
 
+## Yens Task 3: Find the Python Version
 Find which python version is installed on the Yens. You can do this by running the following command:
 
 ```bash
 which python3
 ```
 
-## Yens Challenge:
+## Yens Challenge Task
 
-log into a specific node
-    [Check out our website](https://rcpedia-dev.stanford.edu/_getting_started/how_access_yens/)
+1. unzip the file you uploaded to the Yens 
+2. copy your favorite Pokémon image to to the shared folder zfs/scratch/shared/pokedex
+
+
+
+
+
+
 
 <!-- ## Yens Task 3: Clone the repository:
 

@@ -24,3 +24,8 @@ Purpose: Takes the output of one command and sends it as input to another comman
 
 Challenge Exercise
 ls | cut -d "_" -f2,3 | sort |uniq -c | sort -n | grep ' 1 '
+
+
+Yen Exercise 
+
+Zfs/ 
