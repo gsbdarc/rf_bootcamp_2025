@@ -50,18 +50,6 @@ We also have a [Slack channel](https://app.slack.com/client/E7SAV7LAD/C01JXJ6U4E
 - ⚙️ Power: Run complex scripts and jobs
 
 
-#### **Navigation**
-
-The Yens uses a Unix-like file system. Here are some basic commands to help you navigate:
-```bash
-ls          # List files
-cd folder/  # Change directory
-pwd         # Where am I?
-mkdir test  # Make a folder
-cat file.txt # View file content
-rm file.txt # Remove a file
-```
-
 #### **Investigation**
 
 - Find your current working directory and list the files in it.
@@ -74,7 +62,7 @@ ls           # List files
   
 ```bash
 pwd          # Print working directory
-ls -a       # List all files, including hidden ones (those starting with a dot)
+ls -lah       # List all files, including hidden ones (those starting with a dot)
 ``` 
 
 `-a` is a flag that tells the `ls` command to show all files, including hidden ones (those starting with a dot). Many CLI commands have flags that modify their behavior. You can find more about these flags by checking the manual pages for each command. For example, you can type `man ls` to see the manual for the `ls` command. (hint: type `q` to exit the manual page)
