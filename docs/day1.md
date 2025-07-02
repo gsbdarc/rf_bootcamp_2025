@@ -50,7 +50,7 @@ We also have a [Slack channel](https://app.slack.com/client/E7SAV7LAD/C01JXJ6U4E
 - ⚙️ Power: Run complex scripts and jobs
 
 
-### Navigating the File System
+#### **Navigation**
 
 The Yens uses a Unix-like file system. Here are some basic commands to help you navigate:
 ```bash
@@ -62,14 +62,16 @@ cat file.txt # View file content
 rm file.txt # Remove a file
 ```
 
-#### Investigation 
+#### **Investigation**
 
 - Find your current working directory and list the files in it.
+  
 ``` bash
 pwd          # Print working directory
 ls           # List files
 ```  
 - Determine if there are any hidden files in your current directory.
+  
 ```bash
 pwd          # Print working directory
 ls -a       # List all files, including hidden ones (those starting with a dot)
@@ -78,7 +80,7 @@ ls -a       # List all files, including hidden ones (those starting with a dot)
 `-a` is a flag that tells the `ls` command to show all files, including hidden ones (those starting with a dot). Many CLI commands have flags that modify their behavior. You can find more about these flags by checking the manual pages for each command. For example, you can type `man ls` to see the manual for the `ls` command. (hint: type `q` to exit the manual page)
 
 
-#### Movement
+#### **Movement**
 
 - Change directories to your Desktop or Documents folder.
 - You can use the `cd` command to change directories. The `~` symbol represents your home directory, and you can use `..` to go up one level in the directory structure.
@@ -88,7 +90,7 @@ cd ~/Desktop    # Once you type D try pressing tab to autocomplete or tab twice 
 cd .. # This goes up one level 
 ```
 
-#### Creation
+#### **Creation**
 
 - Create a new folder in your Desktop or documents called `test_folder`.
 
@@ -97,7 +99,7 @@ mkdir ~/Desktop/test_folder
 ```
 
 
-#### Deletion
+#### **Deletion**
 
 - Remove the folder you just created
 
@@ -105,12 +107,12 @@ mkdir ~/Desktop/test_folder
 rm -r ~/Desktop/test_folder
 ```
 
-
+{: .warning}
+These `rm` actions are permanent make sure you double check what you are removing
 
 # Exercise 1: Move and Organize Files
 
-Download the zip file from the link below:
-[File link](https://drive.google.com/file/d/1yLJQunPAksSLPkbWhWZCSIk31DF68g_y/view?usp=drive_link)
+### Download the zip file from the link : [File link](https://drive.google.com/file/d/1yLJQunPAksSLPkbWhWZCSIk31DF68g_y/view?usp=drive_link)
 
 
 ## Step 1: Download, Store, and Unzip the File
@@ -121,7 +123,7 @@ Download the zip file from the link below:
 mv ~/Downloads/file.zip ~/Desktop/
 ```
 
-Let's make sure that the file isn't a zip bomb (a zip file that is actually a folder with a lot of files in it). We can do this by listing the contents of the zip file without extracting it. 
+Let's take a look inside the file before we unzip to get a sense of its' content
 
 ```bash
 unzip -l ~/Desktop/file.zip
@@ -159,11 +161,11 @@ You want to organize them by type, evolution, and other characteristics.
 How do we organize these files into some manageable structure, without dragging and dropping them? Without opening an IDE? 
 
 ## 🔰 Task 1: Move all Rock-type Pokémon to a folder
-🧠 Focus: Use of wildcards (*) and the mv command.
+### 🧠 Focus: Use of wildcards (*) and the mv command.
 
-💪 Challenge:
+### 💪 Challenge:
 
-> Move all files that include _Rock_ as one of their types into a new folder called rock/.
+#### Move all files that include _Rock_ as one of their types into a new folder called rock/.
 
 
 {: .note}
@@ -171,30 +173,27 @@ How do we organize these files into some manageable structure, without dragging 
 
 
 {: .tip}
->The wildcard `*` can be used to match any characters in the file name. Example: `c*` will match any file that starts with c regardless of what comes after it.
+>The wildcard `*` can be used to match any characters in the file name. Example: `c*` will match any file that starts with c regardless of what comes after it, try the command `ls -d c*`
 
-```bash
-ls -d c*
-``` 
 
 ## 🔰 Task 2: Move all Pokémon with secondary type “Flying”
 
-🧠 Focus: Wildcards matching specific position (second type in slot 3).
+### 🧠 Focus: Wildcards matching specific position (second type in slot 3).
 
-💪 Challenge:
+### 💪 Challenge:
 
->**Copy** all files where the **second type** is “Flying” into a folder named flying/.
+#### **Copy** all files where the **second type** is “Flying” into a folder named flying/.
 
 
 ## 🔰 Task 3: Report the pokemon image with the largest file size
 
-🧠 Focus: Understanding different flags you can use
+### 🧠 Focus: Understanding different flags you can use
 
-💪 Challenge: 
+### 💪 Challenge: 
 
-Find the file which has the largest size, smallest size
+#### Find the file which has the largest size, smallest size
 
-Bonus: craft a command that will only report the largest file size and name of the file
+#### Bonus: craft a command that will only report the largest file size and name of the file
 
 {: .tip}
 >This has to do with flags you can use with the 'ls' command 
@@ -204,32 +203,31 @@ Bonus: craft a command that will only report the largest file size and name of t
 
 
 ## 🔰 Task 4: Make a file with all the water type Pokemon names
-🧠 Focus: Using grep to filter files based on content
+### 🧠 Focus: Using grep to filter files based on content
 
-💪 Challenge: 
+### 💪 Challenge: 
 
->Create a **file** that contains the file names of all Water-type Pokémon.
+#### Create a **file** that contains the file names of all Water-type Pokémon.
 
 {: .tip}
->The `grep` command can be used to search for specific patterns in files. For example ls | grep "Dragon" will list all files that contain the word "Dragon" in their name. The  `>` operator can be used to redirect the output of a command to a file. `ls > all_files.txt` will save the output of the `ls` command to a file called `all_files.txt`.
+>The `grep` command can be used to search for specific patterns in files. For example `ls | grep "Dragon"` will list all files that contain the word "Dragon" in their name. The  `>` operator can be used to redirect the output of a command to a file. `ls > all_files.txt` will save the output of the `ls` command to a file called `all_files.txt`.
 
 
 ## 🔰 Task 5: Challenge Task
 
- 💪💪💪 Challenge
-Find the least common primary type and secondary combination among all Pokémon in the image set.
+### 💪💪💪 Challenge
+#### Find the least common primary type and secondary combination among all Pokémon in the image set.
 
 
 1. Extract the type from file names
 
-`abomasnow_Grass_Ice_none.png` is the file name, and the type is `Grass_Ice`.
+ -  `abomasnow_Grass_Ice_none.png` is the file name, and the type is `Grass_Ice`.
 
 2. Count the frequency of the type combos
-
-```plaintext
-14 Grass_Poison
-15 Ground_none
-16 Fairy_none
+  ```plaintext
+  14 Grass_Poison
+  15 Ground_none
+  16 Fairy_none
   ```
 3. Output the type(s) with the smallest count
 
@@ -250,13 +248,16 @@ Use SSH in your terminal (replace <SUNetID>):
 ssh <SUNetID>@yens.stanford.edu
 ```
 
+{: .note}
 Duo authentication is required.
 
 ## Yens Task 1: Explore your home folder
 
- Explore the Yens file systems. What are some different files and directories you see?
-
- What are some of the hidden files you see?
+ Explore the Yens file systems. 
+ 
+ - What are some different files and directories you see?
+ 
+ - What are some of the hidden files you see?
 
 Here are some Yens specific commands to help you understand your home directory
 
@@ -270,7 +271,7 @@ ml avail # List all available modules on the Yens
 
 ## Yens Task 2:
 
- Open another terminal window and upload the zip file you downloaded earlier to the Yens.
+- Open another terminal window and upload the zip file you downloaded earlier to the Yens.
 
 The `scp` command allows you to securely copy files between your local machine and the Yens.
 
@@ -280,7 +281,7 @@ scp /path/to/local/file.zip <SUNetID>@yens.stanford.edu:/
 
 Switch back to the Yens and the file should be in your home directory.
 
-Try running `gsbbrowser` to understand this new files effect on your system.
+- Try running `gsbbrowser` to understand this new files effect on your system.
 
 ```bash
 gsbbrowser
