@@ -170,7 +170,7 @@ How do we organize these files into some manageable structure, without dragging 
 > The `mv` command is used to move files from one location to another. WE move here so we dont duplicate files. 
 
 
-{: .tip)
+{: .tip}
 >The wildcard `*` can be used to match any characters in the file name. Example: `c*` will match any file that starts with c regardless of what comes after it.
 
 ```bash
@@ -196,10 +196,10 @@ Find the file which has the largest size, smallest size
 
 Bonus: craft a command that will only report the largest file size and name of the file
 
-{: .tip)
+{: .tip}
 >This has to do with flags you can use with the 'ls' command 
 
-{: .tip)
+{: .tip}
 >The `head` command can be used to limit the output to the first line the `|` pipe operator can be used to pass the output of one command to another command.
 
 
@@ -210,7 +210,7 @@ Bonus: craft a command that will only report the largest file size and name of t
 
 >Create a **file** that contains the file names of all Water-type Pokémon.
 
-{: .tip)
+{: .tip}
 >The `grep` command can be used to search for specific patterns in files. For example ls | grep "Dragon" will list all files that contain the word "Dragon" in their name. The  `>` operator can be used to redirect the output of a command to a file. `ls > all_files.txt` will save the output of the `ls` command to a file called `all_files.txt`.
 
 
@@ -233,7 +233,7 @@ Find the least common primary type and secondary combination among all Pokémon 
   ```
 3. Output the type(s) with the smallest count
 
-{: .tip)
+{: .tip}
 >You can use the `cut` command to extract the type from the file name, and then use the `sort` and `uniq` commands to count the frequency of each type. Then smartly search the output for those with only 1 type.
 
 
