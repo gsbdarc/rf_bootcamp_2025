@@ -148,16 +148,16 @@ You want to organize them by type, evolution, and other characteristics.
 
 How do we organize these files into some manageable structure, without dragging and dropping them? Without opening an IDE? 
 
-## 🔰 Task 1: Move all Rock-type Pokémon to a folder
+## 🔰 Task 1: Copy all Rock-type Pokémon to a folder
 ### 🧠 Focus: Use of wildcards (*) and the mv command.
 
 ### 💪 Challenge:
 
-#### Move all files that include _Rock_ as one of their types into a new folder called rock/.
+#### Copy all files that include _Rock_ as one of their types into a new folder called rock/.
 
 
 {: .note}
-> The `mv` command is used to move files from one location to another. WE move here so we dont duplicate files. 
+> The `cp` command is used to copy files from one location to another. We copy here so we don't lose the original files.
 
 
 {: .tip}
@@ -172,24 +172,22 @@ How do we organize these files into some manageable structure, without dragging 
 
 #### **Copy** all files where the **second type** is “Flying” into a folder named flying/.
 
-# PUT EXAMPLE OF POKEMON
+`altaria_Dragon_Flying_none.png`
 
-## 🔰 Task 3: Report the pokemon image with the largest file size
+## 🔰 Task 3: Move all Pokemon with rock in the **name** to a folder report largest and smallest file size
 
-### 🧠 Focus: Understanding different flags you can use
+### 🧠 Focus: moving, piping, data flags
 
 ### 💪 Challenge: 
 
-#### Find the file which has the largest size, smallest size
+#### Move all files that have the word "rock" in their name to a folder called rock_names/. Report the largest and smallest file size in the rock_names folder.
 
-#### Bonus: craft a command that will only report the largest file size and name of the file
 
 {: .tip}
 >This has to do with flags you can use with the 'ls' command 
 
 {: .tip}
->The `head` command can be used to limit the output to the first line the `|` pipe operator can be used to pass the output of one command to another command.
-
+>The `grep` command can be used to list files based on their names.  The `|` operator can be used to pipe the output of one command into another. 
 
 ## 🔰 Task 4: Make a file with all the water type Pokemon names
 ### 🧠 Focus: Using grep to filter files based on content
@@ -234,7 +232,7 @@ Use our website to help you answer and understand these next questions: [Rcpedia
 Use SSH in your terminal (replace <SUNetID>):
 
 ```bash
-ssh <SUNetID>@yens.stanford.edu
+ssh <SUNetID>@yen.stanford.edu
 ```
 
 {: .note}
@@ -265,7 +263,7 @@ ml avail # List all available modules on the Yens
 The `scp` command allows you to securely copy files between your local machine and the Yens.
 
 ```bash
-scp /path/to/local/file.zip <SUNetID>@yens.stanford.edu:/
+scp /path/to/local/file.zip <SUNetID>@yen.stanford.edu:/
 ```
 
 Switch back to the Yens and the file should be in your home directory.
