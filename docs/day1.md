@@ -171,11 +171,11 @@ How do we organize these files into some manageable structure, without dragging 
 
 
 {: .tip)
->the wildcard `*` can be used to match any characters in the file name.
->Example: `c*` will match any file that starts with c regardless of what comes after it.
->```bash
->ls -d c*
->``` 
+>The wildcard `*` can be used to match any characters in the file name. Example: `c*` will match any file that starts with c regardless of what comes after it.
+
+```bash
+ls -d c*
+``` 
 
 ## 🔰 Task 2: Move all Pokémon with secondary type “Flying”
 
