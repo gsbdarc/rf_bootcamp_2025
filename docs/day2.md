@@ -104,14 +104,12 @@ which python3
 2. Replace /path/to/your/pokemon_image.png below with that full path.
 
 ```python
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg        
+from PIL import Image
+from IPython.display import display      
 # Load and display a Pokémon image
 img_path = '/path/to/your/pokemon_image.png'  # Replace with your image
-img = mpimg.imread(img_path)
-plt.imshow(img)
-plt.axis('off')  # Hide axes
-plt.show()
+img = Image.open(img_path)
+display(img)
 ```
 
 #### Exercise 1.4: — Manipulate an image on the terminal
@@ -217,6 +215,9 @@ plt.show()
 How would you create a grid of Pokémon images grouped by their `secondary_type`?
  -->
 
+### Whiteboarding
+
+I'll do my best to build some intuition for paths for you on the whiteboard!
 
 ### Exercise 2: Understand Paths
 
@@ -224,7 +225,7 @@ Let's explore your own path, and see how it can change. Earlier, you ran, `modul
 
 #### Exercise 2.1
 
-In your terminal, type:
+In your (Jupyter) terminal, type:
 
 ```bash
 which python
@@ -257,6 +258,8 @@ Is `magick` there for you to use? Verify by trying the following:
 
 Take a look at your `$PATH` -- what changed?
 
+Run `module avail` -- what do you see? Try and load a specific version of R, and verify that it works as you expect. Why would you care about versions?
+
 #### Exercise 2.3
 
 Let's think a little bit more about Python in particular. 
@@ -278,6 +281,10 @@ print(site.getusersitepackages())
 
 This shows all the places Python looks for things that get installed. Compare this with Python on your terminal. -->
 
+### Whiteboarding
+
+All this path and version stuff is important for reproducibility. Let's take a beat to think through what reproducibility means in research.
+
 
 ### Exercise 3: Creating a Python Virtual Environment
 
@@ -285,7 +292,7 @@ A Python virtual environment is a self-contained directory that includes its own
 
 More detailed directions can be found on our [website](https://rcpedia.stanford.edu/_user_guide/python_envs/).
 
-### Step 1 Create and Activate a Virtual Environment
+#### Step 1 Create and Activate a Virtual Environment
 
 First, we will create a dedicated directory for our work and set up our environment inside it.
 
@@ -298,11 +305,13 @@ mkdir day2
 cd day2
 ```
 
-3. Next, create the virtual environment. We'll name is `venv`:
+3. Next, create the virtual environment. We'll name it `venv`:
 ```bash
 /usr/bin/python3  -m venv venv
 # This should make a new folder called venv in your day2 directory
 ```
+
+Find the path to `python3`, and echo the entire `$PATH`. Where is `python3`?
 
 4. Activate the environment:
 
@@ -310,17 +319,90 @@ cd day2
 source venv/bin/activate
 ```
 
+This runs a script that's located in the ./venv/bin directory called `activate`. The `bin` directory doesn't mean like, a literal bin.  It's short for `bin`ary, things that can be executed as programs, as opposed to data or configuration files.
+
 [!TIP]
 **Tip:** You will know the activation was successful when you see (venv) at the beginning of your terminal prompt. This indicates that the virtual environment is active.
 
-L5. Check which Python version is being used in your virtual environment:
+5. Check which Python version is being used in your virtual environment:
 
 ```bash 
 which python3
 ```
 The output should point to the Python executable inside your day2/venv directory.
 
+What is in your path now? What changed?
 
+Run `deactivate` to exit the virtual environment, and then check `which python3` and your path again.
+
+Now, reactivate the environment.
+
+
+#### Step 2: Installing Packages
+
+Your environment is activated, so now you can install  packages using `pip`. Let's try it.
+
+```bash
+pip install dotenv
+```
+
+This library is now installed in *this* environment. You can load it while the environment is activated, but it's not installed for anyone else. Test it out! Try importing `numpy` and `dotenv` in the Jupyter terminal with your virtual environment activated and deactivated.
+
+#### Step 3: Integrating Jupyter Notebooks
+
+Now, let's install the `ipykernel` package, which provides the tools to connect your environment to Jupyter:
+
+```bash
+pip install ipykernel
+```
+
+Now, create a new Jupyter **kernel** linked to your virtual environment. Replace `<kernel_name>` with `day2-venv`.
+```bash
+python -m ipykernel install --user --name=<kernel_name>
+```
+
+In the Jupyter interface, go to your `day2` folder, and start a new notebook. Name it `Interactive,ipynb`. Change the *kernel* to `day2-env`.
+
+You should be able to run:
+
+```python
+import dotenv
+```
+
+If you can't, let's get help!
+
+### Whiteboarding
+
+Let's whiteboard out a real research task, where we use an external large language model to process a SEC filing.
+
+----------
+
+### Exercise 4: Calling OpenAI API
+
+Go ahead and install the `openai` package in your day2 venv. Once you're done, we're ready to call the OpenAI API.
+
+```python
+client = OpenAI(api_key=<your api key>)
+```
+
+**DO NOT** put your API key in here.
+
+#### 
+
+
+completion = client.chat.completions.create(
+    model="gpt-4",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Say hello world!"}
+    ]
+)
+
+# Print the model's response
+print(completion.choices[0].message.content)
+
+
+<!-- 
 ### Step 2: Install Required Packages
 
 Let's look into our `openai_tutorial.ipynb` notebook, which contains code that uses various Python packages.
@@ -332,7 +414,6 @@ You can install packages using pip, the Python package installer. In your termin
 ```bash
 pip install numpy pandas matplotlib seaborn openai python-dotenv
 ```
-
 
 ### Step 3: Connect Your Environment to Jupyter
 
@@ -409,4 +490,4 @@ cat requirements.txt
     - Hint: `pip install -r requirements.txt` 
 4. Create a new Jupyter kernel for the replicated environment.
 5. Verify `openai_tutorial.ipynb` runs without errors in the new environment.
-
+ -->
