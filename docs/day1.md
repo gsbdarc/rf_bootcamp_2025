@@ -239,11 +239,16 @@ The `cat` command can be used to display the contents of a file. For example, `c
 
 # The Yens
 
-Use our website to help you answer and understand these next questions: [Rcpedia](https://rcpedia.stanford.edu/)
+The Yens are Stanford GSB high-powered computing clusters. You’ll use them to organize your data, run code, and collaborate with others in a shared computational ecosystem.
+
+Let’s get you connected and operational.
+
+🔗 Helpful Reference: [Rcpedia](https://rcpedia.stanford.edu/)
+
 
 ## Logging into the Yens 
 
-Use SSH in your terminal (replace <SUNetID>):
+Use SSH in your terminal (replace `<SUNetID>`):
 
 ```bash
 ssh <SUNetID>@yen.stanford.edu
@@ -251,6 +256,13 @@ ssh <SUNetID>@yen.stanford.edu
 
 {: .note}
 Duo authentication is required.
+
+- What do you see when you first log in?
+- What commands are shown?
+- Which node are you connected to?
+
+{: .tip}
+> You can connect to specific nodes by use `ssh <SUNetID>@yen3.stanford.edu` for `yen3`
 
 ## Yens Task 1: Explore your home folder
 
@@ -264,6 +276,10 @@ Here are some Yens specific commands to help you understand your home directory
 
 ```bash
 gsbquota # Find out how much space you have left on your home or in a project directory
+```
+
+```bash
+gsbbrowser # is a disk usage analyzer with an interactive interface
 ```
 
 ```bash
@@ -291,9 +307,6 @@ Switch back to the Yens and the file should be in your home directory.
 
 - Try running `gsbbrowser` to understand this new files effect on your system.
 
-```bash
-gsbbrowser
-```
 
 {: .important}
 > **Important point**: You should be able to ssh into any one of the interactive nodes and the file should be there.
@@ -308,7 +321,7 @@ which python3
 
 ## Yens Challenge Task
 
-1. unzip the file you uploaded to the Yens 
+1. unzip and/or move into the file you uploaded to the Yens 
 2. copy your favorite Pokémon image to to the shared folder zfs/scratch/shared/pokedex
 3. Find my favorite Pokemon image
 
