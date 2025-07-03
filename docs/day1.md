@@ -155,17 +155,19 @@ Example : `bulbasaur_Grass_Poison_ivysaur.png` where:
 
 
 # Challenge: How do we organize these files?
+
 You have a folder full of Pokémon images, but they are all mixed together.
 You want to organize them by type, evolution, and other characteristics.  
 
-How do we organize these files into some manageable structure, without dragging and dropping them? Without opening an IDE? 
 
-## 🔰 Task 1: Copy all Rock-type Pokémon to a folder
+🧠 How can you wrangle this wild folder into order?
+
+
+## 🔰 Task 1: Rock On!
+
+> ## 📁 Copy all Rock-type Pokémon into a folder called rock/
+
 ### 🧠 Focus: Use of wildcards (*) and the cp command.
-
-### 💪 Challenge:
-
-#### Copy all files that include _Rock_ as one of their types into a new folder called rock/.
 
 {: .note}
 > The `cp` command is used to copy files from one location to another. We copy here so we don't lose the original files.
@@ -175,23 +177,22 @@ How do we organize these files into some manageable structure, without dragging 
 >The wildcard `*` can be used to match any characters in the file name. Example: `c*` will match any file that starts with c regardless of what comes after it, try the command `ls c*`
 
 
-## 🔰 Task 2: Copy all Pokémon with secondary type “Flying”
+## 🔰 Task 2: Freebird
+
+> ## 🪶 Copy all Pokémon with secondary type “Flying” into flying/
 
 ### 🧠 Focus: Wildcards matching specific position (second type in slot 3).
 
-### 💪 Challenge:
+Example: `altaria_Dragon_Flying_none.png` is the file name, and the secondary type is `Flying`.
 
-#### **Copy** all files where the **second type** is “Flying” into a folder named flying/.
 
-`altaria_Dragon_Flying_none.png`
+## 🔰 Task 3: Stone cold 
 
-## 🔰 Task 3: Move all Pokemon with rock in the **name** to a folder report largest and smallest file size
+> ## 🪨 Move all Pokémon with “rock” in their name, not type, to rock_names/
+Also, report the largest and smallest file in that folder.
 
 ### 🧠 Focus: moving, piping, data flags
 
-### 💪 Challenge: 
-
-#### Move all files that have the word "rock" in their name to a folder called rock_names/. Report the largest and smallest file size in the rock_names folder.
 
 
 {: .tip}
@@ -200,12 +201,11 @@ How do we organize these files into some manageable structure, without dragging 
 {: .tip}
 >The `grep` command can be used to list files based on their names.  The `|` operator can be used to pipe the output of one command into another. 
 
-## 🔰 Task 4: Make a file with all the water type Pokemon names
-### 🧠 Focus: Using grep to filter files based on content
+## 🔰 Task 4: Keeping Track
 
-### 💪 Challenge: 
+> ## 💧 Create a file listing the names of all Water-type Pokémon called `water_types.txt`
 
-#### Create a **file** that contains the file names of all Water-type Pokémon. Called `water_pokemon.txt`
+🧠 Focus: grep, redirecting (>), file viewing
 
 {: .tip}
 >The `grep` command can be used to search for specific patterns in files. For example `ls | grep "Dragon"` will list all files that contain the word "Dragon" in their name. The  `>` operator can be used to redirect the output of a command to a file. `ls > all_files.txt` will save the output of the `ls` command to a file called `all_files.txt`.
@@ -215,11 +215,11 @@ The `cat` command can be used to display the contents of a file. For example, `c
 
 
 
-## 🔰 Task 5: Challenge Task
+## 🔰 Task 5: Gotta Catch them All -- BONUS
 
-### 💪💪💪 Challenge
-#### Find the least common primary type and secondary combination among all Pokémon in the image set.
+>## 🧪 Find the least common primary+secondary type combination
 
+🧠 Focus: cut, sort, uniq, awk (or other ways to get frequency counts)
 
 1. Extract the type from file names
 
@@ -238,7 +238,6 @@ The `cat` command can be used to display the contents of a file. For example, `c
 
 
 # The Yens
-
 
 Use our website to help you answer and understand these next questions: [Rcpedia](https://rcpedia.stanford.edu/)
 
