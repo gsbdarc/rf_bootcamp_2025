@@ -133,7 +133,6 @@ unzip -l ~/Desktop/technical_data_important.zip
 - Unzip the file to your Desktop
 ```bash
 cd ~/Desktop
-# TODO: Fix this; it currently unzips in Desktop
 unzip ~/Desktop/technical_data_important.zip -d ~/Desktop/technical_data_important/
 ```
 
