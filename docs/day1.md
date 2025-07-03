@@ -61,7 +61,6 @@ ls           # List files
 - Determine if there are any hidden files in your current directory.
   
 ```bash
-pwd          # Print working directory
 ls -lah       # - l long file -a all files -h human readable
 ``` 
 
@@ -83,27 +82,39 @@ cd .. # This goes up one level
 - Create a new folder in your Desktop or documents called `test_folder`.
 
 ```bash
-mkdir ~/Desktop/test_folder
+mkdir ~/Desktop/test_folder # Create a new folder
+
+cd ~/Desktop/test_folder # Change into the new folder
+
+touch test_file.txt # Create a new file
+
+cp test_file.txt test_file_copy.txt # Create a copy of that new file
 ```
+
 
 
 #### **Deletion**
 
-- Remove the folder you just created
-
-```bash
-rm -r ~/Desktop/test_folder
-```
+- Remove the folder and files  you just created
 
 {: .warning}
 These `rm` actions are permanent make sure you double check what you are removing
 
+```bash
+rm test_file.txt # Remove the file
+rm test_file_copy.txt # Remove the copy of the file
+rm -r ~/Desktop/test_folder
+```
+
+
 # Exercise 1: Move and Organize Files
 
-### Download the zip file from the link : [File link](https://drive.google.com/file/d/1yLJQunPAksSLPkbWhWZCSIk31DF68g_y/view?usp=drive_link)
+Your Professor has asked you to grab some research data and organize it for a project. The data is in a zip file that you need to download, unzip, and organize.
+
+## Download the important_techinical data file from the link : **[data](https://drive.google.com/file/d/1lxJTH1wrDhOH7k6gEndRPOTA57sA-vbp/view?usp=sharing)**
 
 
-## Step 1: Download, Store, and Unzip the File
+## Store, and Unzip the File
 
 - Put the file in a directory on your local machine, for example, in your Desktop folder. 
 
@@ -111,26 +122,27 @@ These `rm` actions are permanent make sure you double check what you are removin
 mv ~/Downloads/data.zip ~/Desktop/
 ```
 
-Let's take a look inside the file before we unzip to get a sense of its' content
+- Examine the files contents of the zip file without unzipping it. 
 
 ```bash
 unzip -l ~/Desktop/file.zip
 ``` 
 
-Lets unzip the file in your local machine: 
+- Unzip the file to your Desktop
 ```bash
 cd ~/Desktop
 unzip ~/Desktop/file.zip -d ~/Desktop/  
 ```
 
-This should create a folder called `images/` on your Desktop with all the Pokémon images.
-
+{: .note}
 Take a moment to look at the files in the `images/` folder. You should see files named like this:
+
 ```plaintext
 bulbasaur_Grass_Poison_ivysaur.png
 charmander_Fire_none_charmeleon.png
 squirtle_Water_none_wartortle.png
 ``` 
+
 Now these may be familiar files to some of you and others not so much. They do have a common file structure 
 
 `name_type1_type2_evolution`
@@ -149,19 +161,18 @@ You want to organize them by type, evolution, and other characteristics.
 How do we organize these files into some manageable structure, without dragging and dropping them? Without opening an IDE? 
 
 ## 🔰 Task 1: Copy all Rock-type Pokémon to a folder
-### 🧠 Focus: Use of wildcards (*) and the mv command.
+### 🧠 Focus: Use of wildcards (*) and the cp command.
 
 ### 💪 Challenge:
 
 #### Copy all files that include _Rock_ as one of their types into a new folder called rock/.
-
 
 {: .note}
 > The `cp` command is used to copy files from one location to another. We copy here so we don't lose the original files.
 
 
 {: .tip}
->The wildcard `*` can be used to match any characters in the file name. Example: `c*` will match any file that starts with c regardless of what comes after it, try the command `ls -d c*`
+>The wildcard `*` can be used to match any characters in the file name. Example: `c*` will match any file that starts with c regardless of what comes after it, try the command `ls c*`
 
 
 ## 🔰 Task 2: Copy all Pokémon with secondary type “Flying”
@@ -194,10 +205,14 @@ How do we organize these files into some manageable structure, without dragging 
 
 ### 💪 Challenge: 
 
-#### Create a **file** that contains the file names of all Water-type Pokémon.
+#### Create a **file** that contains the file names of all Water-type Pokémon. Called `water_pokemon.txt`
 
 {: .tip}
 >The `grep` command can be used to search for specific patterns in files. For example `ls | grep "Dragon"` will list all files that contain the word "Dragon" in their name. The  `>` operator can be used to redirect the output of a command to a file. `ls > all_files.txt` will save the output of the `ls` command to a file called `all_files.txt`.
+
+{: .tip}
+The `cat` command can be used to display the contents of a file. For example, `cat water_pokemon.txt` will display the contents of the `water_pokemon.txt` file.
+
 
 
 ## 🔰 Task 5: Challenge Task
@@ -253,7 +268,7 @@ gsbquota # Find out how much space you have left on your home or in a project di
 ```
 
 ```bash
-ml avail # List all available modules on the Yens
+module avail # List all available modules on the Yens
 ```
 
 ## Yens Task 2:
@@ -265,6 +280,13 @@ The `scp` command allows you to securely copy files between your local machine a
 ```bash
 scp /path/to/local/file.zip <SUNetID>@yen.stanford.edu:/
 ```
+
+- Also copy the unzipped folder `images/` to the Yens.
+
+```bash
+scp -r ~/Desktop/images <SUNetID>@yen.stanford.edu:~/images
+``` 
+
 
 Switch back to the Yens and the file should be in your home directory.
 
@@ -289,20 +311,5 @@ which python3
 
 1. unzip the file you uploaded to the Yens 
 2. copy your favorite Pokémon image to to the shared folder zfs/scratch/shared/pokedex
+3. Find my favorite Pokemon image
 
-
-
-
-
-
-
-<!-- ## Yens Task 3: Clone the repository:
-
-We won't be using git for the rest of the course, but we will use it to get the files for the next day.
-
-
-```bash
-git clone https://github.com/gsbdarc/rf_bootcamp_2025.git
-```
-
-This will create a folder called `rf_bootcamp_2025` in your home directory with all the files for the course. -->

@@ -1,7 +1,7 @@
 Exercise 1 
 
 mkdir rock
-mv *_Rock_* rock/
+cp *_Rock_* rock/
 
 
 Exercise 2
@@ -10,12 +10,17 @@ cp *_*_Flying_* flying/
 
 
 Exercise 3
-20K guzzlord_Dark_Dragon_none.png
-1.5K tynamo_Electric_none_none.png
 
-ls -lhS
-Bonus Exercise
-ls -lhS | head -n 2
+Rock names pokemon
+
+mv *rock* rock_names 
+regirock_Rock_none_none.png     rockruff_Rock_none_none.png     solrock_Rock_Psychic_none.png
+
+Largest  7.3K Mar 14  2024 regirock_Rock_none_none.png
+smallest  4.3K Mar 14  2024 solrock_Rock_Psychic_none.png
+
+
+Exercise 4
 
 Explanation:
 | — Pipe Operator
