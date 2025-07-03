@@ -15,11 +15,13 @@ updateDate: 2025-06-17
 
 - **Understand the file system structure** used in Unix-based environments.
 
-- **Navigate the system** with basic command-line tools (ls, cd, pwd, etc.).
+- **Navigate the system** with basic command-line tools (`ls`, `cd`, `pwd`, etc.).
+  - Don't worry if these commands don't mean anything to you yet!
 
+  <!-- TODO: We should explain what a node is at some point -->
 - **Practice hands-on exercises to:**
   - Move, organize, and manipulate files.
-  - Understand shared file systems across nodes.
+  - Understand shared file systems across "nodes".
   - Use commands like `scp`, `mv`, and pattern matching with wildcards.
 
 - **Build comfort and fluency** using the command line interface (CLI) on a shared computing cluster.
@@ -27,27 +29,28 @@ updateDate: 2025-06-17
 
 ## The Yens and DARC
 
-The computing cluster is called the Yens. It's a powerful system with (as of July 2025) 5 interactive nodes, and 10 SLURM nodes(7 CPU and 3 GPU). The Yens has a petabyte of storage and is more powerful than your laptop. It's designed to handle large computing tasks doing work in groups and helping you and your professors publish papers and do research.
+The computing cluster is called the Yens. It's a powerful system with (as of July 2025) 5 interactive nodes, and 10 SLURM nodes (7 CPU and 3 GPU). The Yens has a petabyte of storage and is more powerful than your laptop. It's designed to handle large computing tasks doing work in groups, and to help you and your professors publish papers and do research.
 
 Today we are going to focus on the interactive nodes.
 
 The Yens is managed by the [Data Analytics and Research Computing (DARC)](https://darc.stanford.edu/) team. They provide support and resources for researchers at Stanford to perform data analysis and computational tasks efficiently.
 
-Our Website is [Rcpedia](https://rcpedia.stanford.edu/), where you can find more information and resources about the Yens and other computing resources at Stanford.
+Our website is [Rcpedia](https://rcpedia.stanford.edu/), where you can find more information and resources about the Yens and other computing resources at Stanford.
 
 We also have a [Slack channel](https://app.slack.com/client/E7SAV7LAD/C01JXJ6U4E5) where you can ask questions and get help from the community.
 
-## Introduction into the CLI
+## Introduction To The Command Line Interface (CLI)
 
 ### 🧠 Why Use It?
 
 - 🚀 Speed: Do things faster than clicking
 
+<!-- TODO: Are these really compelling reasons? -->
 - 📁 Navigate: Move around folders and files
 
 - 🧹 Organize: Clean and sort data
 
-- ⚙️ Power: Run complex scripts and jobs
+- ⚙️ Power: Run complex scripts and jobs to automate your work
 
 
 #### **Investigation**
@@ -64,8 +67,7 @@ ls           # List files
 ls -lah       # - l long file -a all files -h human readable
 ``` 
 
-`-lah` is a flag that tells the `ls` command to show all files long format with human readable sizes, including hidden ones (those starting with a dot). Many CLI commands have flags that modify their behavior. You can find more about these flags by googling the command.
-
+`-lah` is a flag that tells the `ls` command to show all files long format with human readable sizes, including hidden ones (those starting with a dot). In general, a flag modifies the behavior of a CLI command. You can find out more about these flags by googling the command.
 
 #### **Movement**
 
@@ -98,20 +100,20 @@ cp test_file.txt test_file_copy.txt # Create a copy of that new file
 - Remove the folder and files  you just created
 
 {: .warning}
-These `rm` actions are permanent make sure you double check what you are removing
+These `rm` commands are **permanent**, so make sure you double check what you are removing!
 
 ```bash
 rm test_file.txt # Remove the file
 rm test_file_copy.txt # Remove the copy of the file
-rm -r ~/Desktop/test_folder
+rm -r ~/Desktop/test_folder # Remove the directory and its contents recursively
 ```
 
 
 # Exercise 1: Move and Organize Files
 
-Your Professor has asked you to grab some research data and organize it for a project. The data is in a zip file that you need to download, unzip, and organize.
+Your professor has asked you to grab some research data and organize it for a project. The data is in a zip file that you need to download, unzip, and organize.
 
-## Download the important_techinical data file from the link : **[data](https://drive.google.com/file/d/1lxJTH1wrDhOH7k6gEndRPOTA57sA-vbp/view?usp=sharing)**
+## Download the technical_data_important.zip file from this link: **[data](https://drive.google.com/file/d/1lxJTH1wrDhOH7k6gEndRPOTA57sA-vbp/view?usp=sharing)**
 
 
 ## Store, and Unzip the File
@@ -119,23 +121,24 @@ Your Professor has asked you to grab some research data and organize it for a pr
 - Put the file in a directory on your local machine, for example, in your Desktop folder. 
 
 ```bash
-mv ~/Downloads/data.zip ~/Desktop/
+mv ~/Downloads/technical_data_important.zip ~/Desktop/
 ```
 
-- Examine the files contents of the zip file without unzipping it. 
+- Examine the contents of the zip file without unzipping it. 
 
 ```bash
-unzip -l ~/Desktop/file.zip
+unzip -l ~/Desktop/technical_data_important.zip
 ``` 
 
 - Unzip the file to your Desktop
 ```bash
 cd ~/Desktop
-unzip ~/Desktop/file.zip -d ~/Desktop/  
+# TODO: Fix this; it currently unzips in Desktop
+unzip ~/Desktop/technical_data_important.zip -d ~/Desktop/technical_data_important/
 ```
 
 {: .note}
-Take a moment to look at the files in the `images/` folder. You should see files named like this:
+Take a moment to look at the files in the `technical_data_important/` folder. You should see files named like this:
 
 ```plaintext
 bulbasaur_Grass_Poison_ivysaur.png
@@ -143,7 +146,7 @@ charmander_Fire_none_charmeleon.png
 squirtle_Water_none_wartortle.png
 ``` 
 
-Now these may be familiar files to some of you and others not so much. They do have a common file structure 
+Now these may be familiar files to some of you and to others not so much. They do have a common file structure:
 
 `name_type1_type2_evolution`
 
@@ -196,7 +199,7 @@ Also, report the largest and smallest file in that folder.
 
 
 {: .tip}
->This has to do with flags you can use with the 'ls' command 
+>This has to do with flags you can use with the `ls` command 
 
 {: .tip}
 >The `grep` command can be used to list files based on their names.  The `|` operator can be used to pipe the output of one command into another. 
@@ -205,7 +208,7 @@ Also, report the largest and smallest file in that folder.
 
 > ## 💧 Create a file listing the names of all Water-type Pokémon called `water_types.txt`
 
-🧠 Focus: grep, redirecting (>), file viewing
+🧠 Focus: `grep`, redirecting (`>`), file viewing
 
 {: .tip}
 >The `grep` command can be used to search for specific patterns in files. For example `ls | grep "Dragon"` will list all files that contain the word "Dragon" in their name. The  `>` operator can be used to redirect the output of a command to a file. `ls > all_files.txt` will save the output of the `ls` command to a file called `all_files.txt`.
@@ -219,7 +222,7 @@ The `cat` command can be used to display the contents of a file. For example, `c
 
 >## 🧪 Find the least common primary+secondary type combination
 
-🧠 Focus: cut, sort, uniq, awk (or other ways to get frequency counts)
+🧠 Focus: `cut`, `sort`, `uniq`, `awk` (or other ways to get frequency counts)
 
 1. Extract the type from file names
 
@@ -239,7 +242,7 @@ The `cat` command can be used to display the contents of a file. For example, `c
 
 # The Yens
 
-The Yens are Stanford GSB high-powered computing clusters. You’ll use them to organize your data, run code, and collaborate with others in a shared computational ecosystem.
+The Yens are Stanford GSB's high-powered computing clusters. You’ll use them to organize your data, run code, and collaborate with others in a shared computational ecosystem.
 
 Let’s get you connected and operational.
 
@@ -262,7 +265,7 @@ Duo authentication is required.
 - Which node are you connected to?
 
 {: .tip}
-> You can connect to specific nodes by use `ssh <SUNetID>@yen3.stanford.edu` for `yen3`
+> You can connect to specific nodes by using `ssh <SUNetID>@yen3.stanford.edu` for `yen3`
 
 ## Yens Task 1: Explore your home folder
 
@@ -290,27 +293,29 @@ module avail # List all available modules on the Yens
 
 - Open another terminal window and upload the zip file you downloaded earlier to the Yens.
 
+{: .tip}
+> You want to be doing this on your local machine (i.e., run the commands below in your _local_ terminal and not in your Yens terminal).
+
 The `scp` command allows you to securely copy files between your local machine and the Yens.
 
 ```bash
-scp /path/to/local/file.zip <SUNetID>@yen.stanford.edu:/
+scp /path/to/local/technical_data_important.zip <SUNetID>@yen.stanford.edu:/
 ```
 
-- Also copy the unzipped folder `images/` to the Yens.
+- Also copy the unzipped folder `technical_data_important/` to the Yens.
 
 ```bash
-scp -r ~/Desktop/images <SUNetID>@yen.stanford.edu:~/images
+scp -r ~/Desktop/technical_data_important <SUNetID>@yen.stanford.edu:~/technical_data_important
 ``` 
 
+Now switch back to the Yens and the file should be in your home directory.
 
-Switch back to the Yens and the file should be in your home directory.
-
-- Try running `gsbbrowser` to understand this new files effect on your system.
+- Try running `gsbbrowser` to understand this new file's effect on your system.
 
 
 {: .important}
 > **Important point**: You should be able to ssh into any one of the interactive nodes and the file should be there.
-that is because the file system is **shared across all the the nodes on the yens**
+That is because the file system is **shared across all the the nodes on the yens**
 
 ## Yens Task 3: Find the Python Version
 Find which python version is installed on the Yens. You can do this by running the following command:
@@ -321,7 +326,8 @@ which python3
 
 ## Yens Challenge Task
 
-1. unzip and/or move into the file you uploaded to the Yens 
-2. copy your favorite Pokémon image to to the shared folder zfs/scratch/shared/pokedex
+1. Unzip and/or move into the directory you uploaded to the Yens 
+2. Copy your favorite Pokémon image to to the shared folder zfs/scratch/shared/pokedex
+<!-- TODO: Is this still relevant, Jeff? -->
 3. Find my favorite Pokemon image
 
