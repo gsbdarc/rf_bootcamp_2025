@@ -356,7 +356,8 @@ Now, let's install the `ipykernel` package, which provides the tools to connect 
 pip install ipykernel
 ```
 
-Now, create a new Jupyter **kernel** linked to your virtual environment. Replace `<kernel_name>` with `day2-venv`.
+Now, create a new Jupyter **kernel** linked to your virtual environment. Replace `<kernel_name>` with `day2-venv`. Make sure you're in your active venv when you run this command!
+
 ```bash
 python -m ipykernel install --user --name=<kernel_name>
 ```
@@ -373,7 +374,7 @@ If you can't, let's get help!
 
 ### Whiteboarding
 
-Let's whiteboard out a real research task, where we use an external large language model to process a SEC filing.
+Let's whiteboard out a real task, where we use an external large language model to process a SEC filing.
 
 ----------
 
@@ -381,17 +382,55 @@ Let's whiteboard out a real research task, where we use an external large langua
 
 Go ahead and install the `openai` package in your day2 venv. Once you're done, we're ready to call the OpenAI API.
 
+Here's how we initialize calls to the OpenAI API:
+
 ```python
+from openai import OpenAI
 client = OpenAI(api_key=<your api key>)
 ```
 
-**DO NOT** put your API key in here.
+**DO NOT** put your API key in here. Instead, we're going to use an API key stored in a 'hidden' file, and load it in as an environment variable.
 
-#### 
+#### 4.1 Try out the `dotenv` library
+
+We can use `os.getenv` to retrieve an *environment variable*. This a variable (like `$PATH`) that exists on the shell, and you can also read it from Python.
+
+```python
+import os
+os.getenv("PATH")
+```
+
+We can use the `dotenv` library to put things into our environment variables, which is a good practice for storing things like API keys.
+
+We prepared a hidden file for you -- take a look at it in the terminal.
+
+```bash
+cat /scratch/shared/rf_bootcamp_2025/.env
+```
+
+Now we're going to use it in Jupyter.
+
+```python
+from dotenv import load_dotenv
+load_dotenv('/scratch/shared/rf_bootcamp_2025/.env')
+```
+
+This should load the environment variable -- test by seeing if `OPENAI_API_KEY` is there in your environment.
+
+Look at the code below -- we can publish this on the internet no problem, because our API key isn't in there!
+
+```python
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+```
+
+#### 4.2 OpenAI: "Hello, World!"
+
+We can try this simple example to confirm it works!
 
 
+```python
 completion = client.chat.completions.create(
-    model="gpt-4",
+    model="gpt-4.1-nano",
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Say hello world!"}
@@ -400,6 +439,65 @@ completion = client.chat.completions.create(
 
 # Print the model's response
 print(completion.choices[0].message.content)
+```
+
+#### 4.3 OpenAI with a SEC Document
+
+We have a mirror of the SEC filings on the Yen servers. Here's one example:
+
+    /zfs/data/NODR/EDGAR_HTTPS/edgar/data/1656998/0000950103-24-000077.txt
+
+Go ahead and load in your notebook at take a look.
+
+One neat thing about Jupyter is that if the document is HTML, you can render the HTML in the document itself:
+
+```python
+from IPython.display import display, HTML
+
+sec_doc = open(filing_path).read()
+display(HTML(sec_doc))
+```
+
+Now, you pass the document and use the LLM to extract a useful piece of information.
+
+#### 4.4 OpenAI with Structured Outputs
+
+We're not out of time yet? Amazing!
+
+We're going to extract key information from a Form 3 filing, including the insider’s name, their role(s), the company name, CIK, and filing date — and return it in a structured, standardized format (e.g., JSON or dictionary).
+
+This will make the data easy to validate, analyze, and store for downstream use (like building a dataset or running queries).
+
+* Write a system prompt that's going to extract the information listed above.
+* Try running it.
+
+Now, we're going to using **structured outputs** to ensure that OpenAI returns a consistent format. We'll use a library called `pydantic` to define what that format is.
+
+* Install `pydantic` in your virtual environment
+* Build a model that contains the information in your filing
+* Send that model to the OpenAI API and confirm you get a structured output back
+
+Here's an example pydantic model:
+
+```python
+from pydantic import BaseModel, Field
+
+class MenuItem(BaseModel):
+    name: str = Field(..., description="Name of the menu item")
+    price: float = Field(..., description="Price of the menu item in dollars")
+```
+
+TODOOOOOO: finish structured outputs part
+
+
+response = client.responses.parse(
+    model="gpt-4.1-nano",
+    input=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt}
+    ],
+    text_format=Form3Filing,
+)
 
 
 <!-- 
