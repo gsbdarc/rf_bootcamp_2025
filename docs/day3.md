@@ -1,7 +1,7 @@
 ---
-title: Day 3 - Running Your First Cluster Jobs
+title: Day 3 -- Running Your First Cluster Jobs
 layout: page
-nav_order: 1
+nav_order: 3
 updateDate: 2025-06-20
 ---
 

@@ -1,7 +1,7 @@
 ---
-title: Day 4 - Running and Scaling Cluster Jobs
+title: Day 4 -- Running and Scaling Cluster Jobs
 layout: page
-nav_order: 1
+nav_order: 4
 updateDate: 2025-06-18
 ---
 
