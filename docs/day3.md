@@ -1,15 +1,14 @@
 ---
-title: Running Your First Cluster Jobs
+title: Day 3 - Running Your First Cluster Jobs
 layout: page
 nav_order: 1
-parent: Day 3
 updateDate: 2025-06-20
 ---
 
 
 # {{ page.title }}
 
-## Day 3 Objectives
+## Objectives
 
 - Monitor resources while running interactively
 

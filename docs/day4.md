@@ -1,15 +1,14 @@
 ---
-title: Running and Scaling Cluster Jobs
+title: Day 4 - Running and Scaling Cluster Jobs
 layout: page
 nav_order: 1
-parent: Day 4
 updateDate: 2025-06-18
 ---
 
 
 # {{ page.title }}
 
-## Day 4 Objectives
+## Objectives
 
 - How do you structure and document reproducible, scalable work on a cluster?
 
