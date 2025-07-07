@@ -12,17 +12,19 @@ updateDate: 2025-06-17
 ## Learning Goals
 By the end of today you will be able to
 
+- understand what a "path" is and why it matters
+
 - create and activate **Python virtual environments** on Yens;
+
+- understand how a virtual environment can assist with reproducible code
 
 - open and run **Jupyter notebooks** in JupyterHub;
 
-- execute **Python code** directly on the cluster;
-
-- make simple visualizations with `pandas`, `seaborn`, and `matplotlib`.
+- understand how to manage passwords and other "secrets" in your code
 
 - Run API calls to OpenAI from JupyterHub.
 
-We finish with a hands‑on exercise to reinforce each skill.
+
 
 ---
 
@@ -88,7 +90,7 @@ Open the terminal tab you started above and try:
 ls
 
 # navigate into your pokemon_images directory
-cd images
+cd technical_data_important
 
 # List files in the pokemon_images directory
 ls
@@ -291,8 +293,6 @@ All this path and version stuff is important for reproducibility. Let's take a b
 A Python virtual environment is a self-contained directory that includes its own Python installation and packages. It allows you to manage dependencies separately for different projects.
 
 More detailed directions can be found on our [website](https://rcpedia.stanford.edu/_user_guide/python_envs/).
-
-#### Step 1 Create and Activate a Virtual Environment
 
 First, we will create a dedicated directory for our work and set up our environment inside it.
 
