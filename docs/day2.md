@@ -1,5 +1,5 @@
 ---
-title: Day 2
+title: Day 2 — Working on the Yens Cluster with JupyterHub
 layout: page
 nav_order: 2
 updateDate: 2025-06-17
@@ -7,7 +7,6 @@ updateDate: 2025-06-17
 
 # {{ page.title }}
 
-# Day 2 — Working on the Yens Cluster with JupyterHub
 ## Learning Goals
 By the end of today you will be able to
 
