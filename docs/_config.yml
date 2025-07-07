@@ -65,6 +65,9 @@ kramdown:
   input: GFM
   hard_wrap: false
 callouts:
+  tip:       
+    title: Tip
+    color: green
   warning:
     title: Warning
     color: red

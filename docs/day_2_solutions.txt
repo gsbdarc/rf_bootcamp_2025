@@ -3,7 +3,7 @@ Exercise 1.1 Solutions
 This is different than the python which is displayed when you SSH in
 
 
-Exercise 1.2. Solutions 
+Exercise 1.4. Solutions 
 
 import os
 import pandas as pd
@@ -67,3 +67,21 @@ plt.ylabel('Count')
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
+
+
+# Exercise 2 Part: B
+
+
+mkdir day2_replicated
+cd day2_replicated
+
+/usr/bin/python3 -m venv venv_replicated
+source venv_replicated/bin/activate
+
+pip install -r ../day2/requirements.txt
+
+# First, install the kernel tool
+pip install ipykernel
+
+# Now, create the kernel and give it a unique name
+python -m ipykernel install --user --name=day2-replicated-venv
