@@ -104,7 +104,7 @@ cp test_file.txt test_file_copy.txt # Create a copy of that new file
 - Remove the folder and files  you just created
 
 {: .warning}
-These `rm` commands are **permanent**, so make sure you double check what you are removing!
+These `rm` actions are **permanent**, so make sure you double check what you are removing!
 
 ```bash
 rm test_file.txt # Remove the file
