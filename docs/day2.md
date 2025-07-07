@@ -100,7 +100,10 @@ which python3
 
 #### Exercise 1.3: — Display a Pokémon Image
 
-1. Locate any PNG in your images folder (use the file browser or ls). Tip: You can double click on it to view it natively in JupyterHub.
+1. Locate any PNG in your images folder (use the file browser or ls). 
+
+{: .tip}
+>You can double click on it to view it natively in JupyterHub.
 
 2. Replace /path/to/your/pokemon_image.png below with that full path.
 
@@ -320,8 +323,8 @@ source venv/bin/activate
 
 This runs a script that's located in the ./venv/bin directory called `activate`. The `bin` directory doesn't mean like, a literal bin.  It's short for `bin`ary, things that can be executed as programs, as opposed to data or configuration files.
 
-[!TIP]
-**Tip:** You will know the activation was successful when you see (venv) at the beginning of your terminal prompt. This indicates that the virtual environment is active.
+{: .tip}
+>**Tip:** You will know the activation was successful when you see (venv) at the beginning of your terminal prompt. This indicates that the virtual environment is active.
 
 5. Check which Python version is being used in your virtual environment:
 
@@ -484,10 +487,6 @@ from pydantic import BaseModel, Field
 class MenuItem(BaseModel):
     name: str = Field(..., description="Name of the menu item")
     price: float = Field(..., description="Price of the menu item in dollars")
-```
-
-TODOOOOOO: finish structured outputs part
-
 
 response = client.responses.parse(
     model="gpt-4.1-nano",
@@ -497,6 +496,10 @@ response = client.responses.parse(
     ],
     text_format=Form3Filing,
 )
+```
+
+<!-- TODOOOOOO: finish structured outputs part -->
+
 
 
 <!-- 
