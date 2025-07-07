@@ -53,6 +53,13 @@ We also have a [Slack channel](https://app.slack.com/client/E7SAV7LAD/C01JXJ6U4E
 - ⚙️ Power: Run complex scripts and jobs to automate your work
 
 
+{: .important}
+If you are a **Mac** or **Linux** user, you can use the native terminal for these exercises.
+
+{: .important}
+If you are a **Windows** user, you can use [Git Bash](https://git-scm.com/downloads) to run these commands.
+
+
 #### **Investigation**
 
 - Find your current working directory and list the files in it.
