@@ -17,8 +17,6 @@ updateDate: 2025-06-17
 
 - **Navigate the system** with basic command-line tools (`ls`, `cd`, `pwd`, etc.).
   - Don't worry if these commands don't mean anything to you yet!
-
-  <!-- TODO: We should explain what a node is at some point -->
 - **Practice hands-on exercises to:**
   - Move, organize, and manipulate files.
   - Understand shared file systems across "nodes".
@@ -45,7 +43,6 @@ We also have a [Slack channel](https://app.slack.com/client/E7SAV7LAD/C01JXJ6U4E
 
 - 🚀 Speed: Do things faster than clicking
 
-<!-- TODO: Are these really compelling reasons? -->
 - 📁 Navigate: Move around folders and files
 
 - 🧹 Organize: Clean and sort data
@@ -334,6 +331,5 @@ which python3
 
 1. Unzip and/or move into the directory you uploaded to the Yens 
 2. Copy your favorite Pokémon image to to the shared folder zfs/scratch/shared/pokedex
-<!-- TODO: Is this still relevant, Jeff? -->
 3. Find my favorite Pokemon image
 
