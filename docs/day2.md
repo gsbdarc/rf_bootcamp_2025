@@ -70,7 +70,6 @@ print("Hello, World!")
 # Use the math module
 import math
 print(math.pi)
-
 ```
 
 ```python
@@ -364,7 +363,7 @@ Now, create a new Jupyter **kernel** linked to your virtual environment. Replace
 python -m ipykernel install --user --name=<kernel_name>
 ```
 
-In the Jupyter interface, go to your `day2` folder, and start a new notebook. Name it `Interactive,ipynb`. Change the *kernel* to `day2-env`.
+In the Jupyter interface, go to your `day2` folder, and start a new notebook. Name it `Interactive.ipynb`. Change the *kernel* to `day2-env`.
 
 You should be able to run:
 
