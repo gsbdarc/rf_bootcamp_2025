@@ -142,9 +142,9 @@ A legend we will use:
 
 ### 💻  Exercise 5: Let's make a slurm script to run our research code to process one Form 3 file
 
-- Make a new file called `extract_form_3_one_file.slurm`
+- Make a new file in `slurm` directory called `extract_form_3_one_file.slurm`
 
-- Make file line to be:
+- Make the first line to be:
   ```
   #!/bin/bash
   ```
@@ -159,17 +159,6 @@ A legend we will use:
   #SBATCH --cpus-per-task=<cores>
   #SBATCH --mail-type=<alert-types>
   #SBATCH --mail-user=<your_email@stanford.edu>
-  ```
-
-  Let's modify each one. For example,
-
-  ```
-  #SBATCH --job-name=extract-one-file
-  #SBATCH --output=logs/extract-one-file-%j.out
-  #SBATCH --time=01:00:00
-  #SBATCH --mem=4G
-  #SBATCH --cpus-per-task=1
-  #SBATCH --mail-type=ALL
   ```
 
 - Activate venv we made
@@ -187,6 +176,8 @@ A legend we will use:
   ```
 
 - Save the file.
+
+- 🟩/🟥
 
 ### 💻 Let's submit it:
 
