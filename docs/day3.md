@@ -184,11 +184,11 @@ sbatch slurm/extract_form_3_one_file.slurm
 
 ### Discussion
 
--❓ What will happen if you underestimage the time your script needs? 
+-❓ What will happen if you underestimate the time your script needs? 
 
 -❓ What will happen if you overestimate the time your script needs? 
 
--❓ What will happen if you underestimage the CPU cores your script needs? 
+-❓ What will happen if you underestimate the CPU cores your script needs? 
 
 -❓ What will happen if you overestimate the CPU cores your script needs? 
 
