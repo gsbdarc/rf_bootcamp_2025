@@ -41,7 +41,7 @@ user_prompt = filing_text
 
 # Call OpenAI
 response = client.responses.parse(
-    model="o4-mini",
+    model="gpt-4.1-nano",
     input=[
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_prompt}

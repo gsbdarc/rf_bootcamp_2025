@@ -1,8 +1,8 @@
 ---
-title: Day 3 -- Running Your First Cluster Jobs
+title: Day 3 -- Running Your First Cluster Job
 layout: page
 nav_order: 3
-updateDate: 2025-06-20
+updateDate: 2025-07-08
 ---
 
 
@@ -10,86 +10,161 @@ updateDate: 2025-06-20
 
 ## Objectives
 
-- Monitor resources while running interactively
-
-- Submit your first job to the cluster using Slurm
+- Monitor Yen resources while running interactively
 
 - Connect your code, environment, and input data into a runnable job
 
 - Build mental models of how cluster resources are shared
 
+- Submit your first job to the cluster using Slurm
+
 Today we take your interactive work and transition it into Slurm cluster jobs. We'll also pause at several points to discuss how resources are allocated on a shared research cluster. 
 
-### Conceptualizing Resources on a Shared Cluster
+## Day 2 Recap
 
-We'll whiteboard these concepts to build intuition:
+What have we learned so far:
 
-- CPUs (Cores): How many cores are available? How many does your job actually use?
+- made a virtual environment that can be run on the Yens as a kernel or interactively 
+- made a python script that calls OpenAI API to extract key pieces of information from one Form 3 filing
+- talked about LLM structured outputs and how useful they are
 
-- RAM (Memory): How much memory does your job need?
 
-- GPU (if applicable): Specialized resource for certain tasks.
+Let's start by downloading some scripts to the Yens, making a new virtual env and running a python script to extract information from Form 3 using structured outputs.
 
-- Time: How long will your job run? What happens if it runs too long?
+---
 
-- Quota (Storage Space Limits): How much disk space do you have for your files, and where?
+A legend we will use:
+- 💻: means "use terminal on the Yens"
+- ✏️ : means "we will white board this"
+- 🐍: means "python script" 
+- ❓: question for class
+- 🟩/🟥: means "put up the colored sticky once you finish the exercise / ask for help"
 
-- Notebook Limits / Interactive Yen Limits: Interactive sessions have lower resource caps compared to batch jobs.
+### 💻 Exercise 0: Git Clone the Class Repo
 
-### Recap: Running Code Interactively
+- Login to the yens
 
-- You already have a Python script that calls an API and processes one file.
+- Copy a repo with exercises for Day 3:
+    ```
+    git clone https://github.com/gsbdarc/rf_bootcamp_2025.git
+    ```
+- Navigate to the exercises directory and look at the `requirements.txt` file:
+    ```
+    cd rf_bootcamp_2025/exercises
+    cat requirements.txt
+    ```
+- 🟩/🟥
 
-- You've tested it interactively using your virtual environment.
+-❓ What is `requirements.txt` file? 
 
-Exercise:
+-❓ Why is it useful? 
 
-- Run your script again interactively while monitoring CPU and RAM usage with `top` or `htop` and `userload`.
+### 💻 Exercise 1: Make a virtual environment (yes, again)
 
-- How much RAM and CPU does your job actually need?
+- Let's make a virtual environment from `requirements.txt`:
+    ```
+    /usr/bin/python3 -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+    ```
+- 🟩/🟥
 
-- Discuss: What would happen if you ran 100 of these in parallel?
+### 💻 Exercise 2: Run python script 
 
-### Submitting Your First Slurm Job
-Submitting Your First Slurm Job:
-Exercise:
+- Let's look at the script called `extract_form_3_one_file.py` inside `scripts` directory.
 
-- Write and submit your own Slurm job.
+- ❓: What is the script doing?
 
-- Check job status with `squeue`.
+- Run it using the virtual env python you just made
 
-- View logs in your `logs/` directory.
+- ❓: What do you see? 
 
+- 🟩/🟥 
+
+###✏️  Conceptualizing Resources on a Shared Cluster
+#### Research Project
+
+  - **What** am I doing?
+  - **Where** am I doing it?
+  - **How** am I doing it?  
+
+####✏️  1. **Where** am I cooking?
+- ❓: Pro's / con's
+- Kitchen demo!
+ 
+
+####✏️  2. **How** am I cooking it? 
+
+### 💻 Exercise 3: Run python script again 
+
+- Run your script again interactively
+
+- ❓: **Why** do you want to estimate the resources? 
+
+- ❓: **How** do we estimate time it will take, cores and RAM we need for the script to run? 
+
+### 💻 Exercise 4: Run a different python script
+ 
+- Run `mystery_script.py` 
+
+- While the script is running, on the same yen (in a second terminal), watch the script run while running `time`, `htop`, `htop -u $USER` `userload`
+
+- Compare with your neighbor the time, cores and RAM usage 
+
+- What do you see?
+
+- 🟩/🟥
+
+####✏️  Interactive Yens
+
+####✏️  Yen-Slurm Cluster
+
+### 💻 Exercise 5: Let's make a slurm script to run our research code to process one Form 3 file
+
+- Slurm flags
+- Request appropriate resources
+- Activate venv we made
+- Call python script
+
+Let's submit it:
+
+```
+sbatch slurm/extract_form_3_one_file.slurm
+```
+
+- Verify results are generated correctly
+
+- Monitor the queue with `squeue` or `squeue -u $USER`
+
+- Use `scancel <jobid>` if you need to cancel
+ 
 - Verify results are generated correctly.
 
+- 🟩/🟥
 
-### Debugging and Iterating on Cluster Jobs
+### 💻 Exercise 6: Debugging and Iterating on Cluster Jobs
 
-- What happens if your job crashes?
+- ❓ What happens if your job crashes?
 
-- What information is in the Slurm log files?
+- ❓ What information is in the Slurm log files?
 
-- How do you rerun failed jobs?
+- ❓ How do you rerun failed jobs?
 
-Exercise:
+- Submit `fix_me.slurm`, `fix_me_2.slurm`, or `fix_me_3.slurm`
 
-- Intentionally break your job (e.g., wrong file name) and review logs.
+- Look at logs
 
-- Fix and resubmit.
+- Fix it and resubmit
 
+- Bonus: debug `extract_form_3_one_file_broken.slurm` 
 
-### Organizing Your Research Project
-Project structure best practices:
+- 🟩/🟥
 
-```
-project-name/
-│
-├── data/         # Input data files
-├── results/      # Output files
-├── scripts/      # Code/scripts
-├── slurm/        # Slurm job submission scripts
-├── venv/         # Virtual environment 
-├── requirements.txt  # Dependencies
-└── README.md     # Project documentation
-```
+### Discussion
 
+-❓ What will happen if you underestimage the time your script needs? 
+-❓ What will happen if you overestimate the time your script needs? 
+-❓ What will happen if you underestimage the CPU cores your script needs? 
+-❓ What will happen if you overestimate the CPU cores your script needs? 
+-❓ What will happen if you underestimate the RAM your script needs? 
+-❓ What will happen if you overestimate the RAM your script needs? 
