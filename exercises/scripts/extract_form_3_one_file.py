@@ -11,7 +11,7 @@ with open(filing_path, "r") as f:
     filing_text = f.read()
 
 # Load environment variables
-load_dotenv("/zfs/projects/darc/rf_bootcamp_2025/.env")
+load_dotenv('/scratch/shared/rf_bootcamp_2025/.env')
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Define your Pydantic model for GPT response
