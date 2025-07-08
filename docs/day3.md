@@ -45,35 +45,39 @@ A legend we will use:
 
 - Remove all kernels you made and folders you copied or made in Day 1 and Day 2
 
-    ```
-    # activate old env that has jupyter installed
-    source <old-env>/bin/activate
+```
+# activate old env that has jupyter installed
+source <old-env>/bin/activate
 
-    # list kernels
-    jupyter kernelspec list
+# list kernels
+jupyter kernelspec list
 
-    # uninstall kernel by name
-    jupyter kernelspec uninstall <kernel-name>
+# uninstall kernel by name
+jupyter kernelspec uninstall <kernel-name>
 
-    # deactivate venv 
-    deactivate
+# deactivate venv 
+deactivate
 
-    # cd to your home
-    cd
+# cd to your home
+cd
 
-    # clean up directories from Day 1 and Day 2
-    rm -r <folder-name>
-    ```
+# clean up directories from Day 1 and Day 2
+rm -r <folder-name>
+```
 
 - Copy a repo with exercises for Day 3:
-    ```
-    git clone https://github.com/gsbdarc/rf_bootcamp_2025.git
-    ```
+
+```
+git clone https://github.com/gsbdarc/rf_bootcamp_2025.git
+```
+
 - Navigate to the exercises directory and look at the `requirements.txt` file:
-    ```
-    cd rf_bootcamp_2025/exercises
-    cat requirements.txt
-    ```
+
+```
+cd rf_bootcamp_2025/exercises
+cat requirements.txt
+```
+
 - 🟩/🟥
 
 -❓ What is `requirements.txt` file? 
@@ -83,11 +87,13 @@ A legend we will use:
 ### 💻 Exercise 1: Make a virtual environment (yes, again)
 
 - Let's make a virtual environment from `requirements.txt`:
-    ```
-    /usr/bin/python3 -m venv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
-    ```
+
+```
+/usr/bin/python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
 - 🟩/🟥
 
 ### 💻 Exercise 2: Run python script 
