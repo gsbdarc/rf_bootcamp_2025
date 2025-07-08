@@ -10,17 +10,17 @@ updateDate: 2025-06-17
 ## Learning Goals
 By the end of today you will be able to
 
-- understand what a "path" is and why it matters
+- understand what a "path" is and why it matters;
 
 - create and activate **Python virtual environments** on Yens;
 
-- understand how a virtual environment can assist with reproducible code
+- understand how a virtual environment can assist with reproducible code;
 
 - open and run **Jupyter notebooks** in JupyterHub;
 
-- understand how to manage passwords and other "secrets" in your code
+- understand how to manage passwords and other "secrets" in your code;
 
-- Run API calls to OpenAI from JupyterHub.
+- run API calls to OpenAI from JupyterHub.
 
 
 
@@ -55,7 +55,7 @@ You should see the folders you created on the previous day, including your exerc
 - Click the **Terminal** icon to launch a shell (we’ll use it for environment commands).
 
 
-#### Exercise 1.1 -First Notebook Cells
+#### Exercise 1.1: First Notebook Cells
 
 Copy each of the following into separate cells in your notebook, then run them using `Shift + Enter.`
 
@@ -76,9 +76,31 @@ numbers = [1, 2, 3, 4, 5]
 print(sum(numbers))
 ```
 
+#### Exercise 1.2: Saving + Running Python Scripts
 
+Open the terminal tab you started above and run:
 
-#### Exercise 1.2 — Jupyter Terminal Basics
+```bash 
+touch interactive.py
+```
+
+Now find the script in your finder, double click on it, and paste the code you wrote above into `interactive.py` (save the file once you're done).
+
+To verify that it works, run 
+```bash 
+python interactive.py
+```
+and check that you get the following output:
+
+```
+Hello, World!
+3.141592653589793
+15
+```
+
+If you ever need to run a Python script in the future (for instance, later in this course), you can now use the script you created as a starting point.
+
+#### Exercise 1.3: Jupyter Terminal Basics
 
 Open the terminal tab you started above and try:
 
@@ -96,7 +118,7 @@ ls
 which python3
 ```
 
-#### Exercise 1.3: — Display a Pokémon Image
+#### Exercise 1.4: Display a Pokémon Image
 
 1. Locate any PNG in your images folder (use the file browser or ls). 
 
@@ -114,7 +136,7 @@ img = Image.open(img_path)
 display(img)
 ```
 
-#### Exercise 1.4: — Manipulate an image on the terminal
+#### Exercise 1.5: Manipulate an image on the terminal
 
 1. Let's manipulate an image on the terminal using a tool called `imagemagick`.
 
@@ -458,42 +480,108 @@ sec_doc = open(filing_path).read()
 display(HTML(sec_doc))
 ```
 
-Now, you pass the document and use the LLM to extract a useful piece of information.
+Now, you pass the document and use the LLM to extract a useful piece of information. Try changing the *system prompt* to describe what you want from the document, and then just pass `sec_doc` as the user prompt. Here's a simple example:
 
-#### 4.4 OpenAI with Structured Outputs
+        {"role": "system", "content": "You are a terse assistant that reads SEC Form 3 documents and extracts a list of the names of all of the attorneys-in-fact."},
+        {"role": "user", "content": sec_doc}
+
+#### 4.4 From Jupyter to Command Line
+
+A notebook is a great place to *explore*, investigating data, testing things out, and developing skills. Let's make a cell in our notebook that concisely does the following:
+
+* Load the relevant packages
+* Set up your OpenAI client (using `dotenv`)
+* Set up the path to your sample SEC document
+* Call the OpenAI model to extract information from the sample document
+* Print the results from OpenAI
+
+Once you've prepared that cell, copy its contents to a new file called `form3_test.py`. Run it in the terminal and verify that it works.
+
+#### 4.5 OpenAI with Structured Outputs
 
 We're not out of time yet? Amazing!
 
-We're going to extract key information from a Form 3 filing, including the insider’s name, their role(s), the company name, CIK, and filing date — and return it in a structured, standardized format (e.g., JSON or dictionary).
+We're going to extract key information from a Form 3 filing, which is a filing company directors ("insiders") have to submit to the SEC to disclose their financial interests (to prevent things like insider trading). Each Form 3 filing includes the insider’s name, their role(s), the company name, CIK (an index for companies and individuals filing with the SEC), and the filing date.
 
-This will make the data easy to validate, analyze, and store for downstream use (like building a dataset or running queries).
+We want to find and return this information in a structured, standardized format (e.g., JSON or a dictionary). This will make the data easy to validate, analyze, and store for downstream use (like building a dataset or running queries).
 
-* Write a system prompt that's going to extract the information listed above.
+Note that since large language models are sometimes a little unreliable, we will use **structured outputs** to ensure that OpenAI returns a consistent format. We can use a library called `pydantic` to define what that format is.
+
+So, to recap, your tasks are:
+* Write a **system prompt** that's going to extract the information listed above (i.e., the insider's name, role, etc.).
 * Try running it.
 
-Now, we're going to using **structured outputs** to ensure that OpenAI returns a consistent format. We'll use a library called `pydantic` to define what that format is.
+To do this, you will want to:
+* Install `pydantic` in your virtual environment;
+* Build a `pydantic` model (as in the example below) that contains the information in your filing;
+* Write a prompt to extract the information we care about in the SEC filing;
+* Send that model to the OpenAI API and confirm you get a structured output back.
 
-* Install `pydantic` in your virtual environment
-* Build a model that contains the information in your filing
-* Send that model to the OpenAI API and confirm you get a structured output back
-
-Here's an example pydantic model:
+Here's an example for a setting in which we want to query the name and price of an item on a lunch menu:
 
 ```python
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
 from pydantic import BaseModel, Field
 
+# Load environment variables
+load_dotenv('/scratch/shared/rf_bootcamp_2025/.env')
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+# Define pydantic model specifying desired LLM outputs
 class MenuItem(BaseModel):
     name: str = Field(..., description="Name of the menu item")
     price: float = Field(..., description="Price of the menu item in dollars")
 
+# Specify the menu to be parsed (this is a subset of yesterday's Arbuckle menu)
+user_prompt = """
+    cheese pizza
+    with house-made dough and tomato sauce with fontina-mozzarella-provolone cheese blend — $5.20
+
+    chef blend mushroom pizza
+    with house-made pizza dough and four-cheese garlic sauce, roasted global chef blend mushroom, caramelized shallot, truffle oil, frisée, chives — $5.20
+
+    blue cheese buffalo chicken pizza
+    with house-made pizza dough and pizza sauce, Point Reyes blue cheese, buffalo chicken, green bell pepper, lemon yogurt sauce, green onion — $5.20
+
+    pepperoni pizza
+    with thinly sliced pepperoni with house-made dough and sauce with fontina-mozzarella-provolone cheese blend — $5.20
+
+    classic cheeseburger
+    with Niman Ranch 100% Angus beef, onion, lettuce, heirloom tomato, cheddar cheese, pickle mustard sauce, brioche bun, choice of fries or onion rings
+    regular — $12.95
+
+    grilled sesame chicken cabbage crunch salad
+    with mixed cabbage slaw, jalapeño, red onion, green onion, carrot, cucumber, celery, crispy wonton, sesame ginger tamari soy dressing — $12.95
+
+    Croque Monsieur Sandwich
+    with Panorama Baking Co sourdough bread, béchamel sauce, parmesan cheese, Swiss cheese, provolone cheese, sliced Black Forest ham, Dijon mustard, choice of fries or onion rings — $12.95
+"""
+
+# Tell the LLM what to do
+system_prompt = """
+    You are at a cafeteria and you want to extract the name and price of the cheeseburger on the menu.
+    Please extract the following fields:
+    
+    - name: The name of the cheeseburger item.
+    - price: The price, in dollars, of the cheeseburger item.
+
+    Return valid JSON matching the provided Pydantic model.
+"""
+
+# Query the API
 response = client.responses.parse(
     model="gpt-4.1-nano",
     input=[
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_prompt}
     ],
-    text_format=Form3Filing,
+    text_format=MenuItem,
 )
+
+# Print the LLM result
+print(response.output_parsed.model_dump())
 ```
 
 <!-- TODOOOOOO: finish structured outputs part -->
