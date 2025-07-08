@@ -486,24 +486,23 @@ Now, you pass the document and use the LLM to extract a useful piece of informat
 
 We're not out of time yet? Amazing!
 
-We're going to extract key information from a Form 3 filing, which is a filing company officers and directors ("insiders") have to submit to the SEC to disclose their financial interests and prevent things like insider trading. Each Form 3 filing includes the insider’s name, their role(s), the company name, CIK (an index for companies and individuals filing with the SEC), and the filing date.
+We're going to extract key information from a Form 3 filing, which is a filing company directors ("insiders") have to submit to the SEC to disclose their financial interests (to prevent things like insider trading). Each Form 3 filing includes the insider’s name, their role(s), the company name, CIK (an index for companies and individuals filing with the SEC), and the filing date.
 
 We want to find and return this information in a structured, standardized format (e.g., JSON or a dictionary). This will make the data easy to validate, analyze, and store for downstream use (like building a dataset or running queries).
 
-Your task is to:
-* Write a system prompt that's going to extract the information listed above (i.e., the insider's name, role, etc.).
+Note that since large language models are sometimes a little unreliable, we will use **structured outputs** to ensure that OpenAI returns a consistent format. We can use a library called `pydantic` to define what that format is.
+
+So, to recap, your tasks are:
+* Write a **system prompt** that's going to extract the information listed above (i.e., the insider's name, role, etc.).
 * Try running it.
 
+To do this, you will want to:
+* Install `pydantic` in your virtual environment;
+* Build a `pydantic` model (as in the example below) that contains the information in your filing;
+* Write a prompt to extract the information we care about in the SEC filing;
+* Send that model to the OpenAI API and confirm you get a structured output back.
 
-**TODO: RETURN AND CONTINUE FROM HERE**
-
-Now, we're going to using **structured outputs** to ensure that OpenAI returns a consistent format. We'll use a library called `pydantic` to define what that format is.
-
-* Install `pydantic` in your virtual environment
-* Build a model that contains the information in your filing
-* Send that model to the OpenAI API and confirm you get a structured output back
-
-Here's an example pydantic model:
+Here's an example for a setting in which we want to query the names and prices of items on a dinner menu:
 
 ```python
 from pydantic import BaseModel, Field
@@ -512,13 +511,48 @@ class MenuItem(BaseModel):
     name: str = Field(..., description="Name of the menu item")
     price: float = Field(..., description="Price of the menu item in dollars")
 
+# This is a subset of yesterday's Arbuckle menu
+user_prompt = """
+    cheese pizza
+    with house-made dough and tomato sauce with fontina-mozzarella-provolone cheese blend — $5.20
+
+    chef blend mushroom pizza
+    with house-made pizza dough and four-cheese garlic sauce, roasted global chef blend mushroom, caramelized shallot, truffle oil, frisée, chives — $5.20
+
+    blue cheese buffalo chicken pizza
+    with house-made pizza dough and pizza sauce, Point Reyes blue cheese, buffalo chicken, green bell pepper, lemon yogurt sauce, green onion — $5.20
+
+    pepperoni pizza
+    with thinly sliced pepperoni with house-made dough and sauce with fontina-mozzarella-provolone cheese blend — $5.20
+
+    classic cheeseburger
+    with Niman Ranch 100% Angus beef, onion, lettuce, heirloom tomato, cheddar cheese, pickle mustard sauce, brioche bun, choice of fries or onion rings
+    regular — $12.95
+
+    grilled sesame chicken cabbage crunch salad
+    with mixed cabbage slaw, jalapeño, red onion, green onion, carrot, cucumber, celery, crispy wonton, sesame ginger tamari soy dressing — $12.95
+
+    Croque Monsieur Sandwich
+    with Panorama Baking Co sourdough bread, béchamel sauce, parmesan cheese, Swiss cheese, provolone cheese, sliced Black Forest ham, Dijon mustard, choice of fries or onion rings — $12.95
+"""
+
+system_prompt = """
+    You are at a cafeteria and you want to extract the names and prices of all the menu items before making a decision about what to eat. 
+    Please extract the following fields:
+    
+    - name: The name of the menu item.
+    - price: The price, in dollars, of the menu item.
+
+    Return valid JSON matching the provided Pydantic model.
+"""
+
 response = client.responses.parse(
     model="gpt-4.1-nano",
     input=[
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_prompt}
     ],
-    text_format=Form3Filing,
+    text_format=MenuItem,
 )
 ```
 
