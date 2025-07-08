@@ -502,16 +502,24 @@ To do this, you will want to:
 * Write a prompt to extract the information we care about in the SEC filing;
 * Send that model to the OpenAI API and confirm you get a structured output back.
 
-Here's an example for a setting in which we want to query the names and prices of items on a dinner menu:
+Here's an example for a setting in which we want to query the names and prices of items on a lunch menu:
 
 ```python
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
 from pydantic import BaseModel, Field
 
+# Load environment variables
+load_dotenv("/zfs/projects/darc/rf_bootcamp_2025/.env")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+# Define pydantic model specifying desired LLM outputs
 class MenuItem(BaseModel):
     name: str = Field(..., description="Name of the menu item")
     price: float = Field(..., description="Price of the menu item in dollars")
 
-# This is a subset of yesterday's Arbuckle menu
+# Specify the menu to be parsed (this is a subset of yesterday's Arbuckle menu)
 user_prompt = """
     cheese pizza
     with house-made dough and tomato sauce with fontina-mozzarella-provolone cheese blend — $5.20
@@ -536,6 +544,7 @@ user_prompt = """
     with Panorama Baking Co sourdough bread, béchamel sauce, parmesan cheese, Swiss cheese, provolone cheese, sliced Black Forest ham, Dijon mustard, choice of fries or onion rings — $12.95
 """
 
+# Tell the LLM what to do
 system_prompt = """
     You are at a cafeteria and you want to extract the names and prices of all the menu items before making a decision about what to eat. 
     Please extract the following fields:
@@ -546,6 +555,7 @@ system_prompt = """
     Return valid JSON matching the provided Pydantic model.
 """
 
+# Query the API
 response = client.responses.parse(
     model="gpt-4.1-nano",
     input=[
@@ -554,6 +564,9 @@ response = client.responses.parse(
     ],
     text_format=MenuItem,
 )
+
+# Print the LLM result
+print(response.output_parsed.model_dump())
 ```
 
 <!-- TODOOOOOO: finish structured outputs part -->
