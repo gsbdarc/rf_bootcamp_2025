@@ -1,5 +1,5 @@
 ---
-title: Day 3 -- Running Your First Cluster Job
+title: Day 3 — Running Your First Cluster Job
 layout: page
 nav_order: 3
 updateDate: 2025-07-08
@@ -24,9 +24,9 @@ Today we take your interactive work and transition it into Slurm cluster jobs. W
 
 What have we learned so far:
 
-- made a virtual environment that can be run on the Yens as a kernel or interactively 
-- made a python script that calls OpenAI API to extract key pieces of information from one Form 3 filing
-- talked about LLM structured outputs and how useful they are
+- Made a virtual environment that can be run on the Yens as a kernel or interactively 
+- Made a python script that calls OpenAI API to extract key pieces of information from one Form 3 filing
+- Talked about LLM structured outputs and how useful they are
 
 
 Let's start by downloading some scripts to the Yens, making a new virtual env and running a python script to extract information from Form 3 using structured outputs.
@@ -42,7 +42,29 @@ A legend we will use:
 
 ### 💻 Exercise 0: Git Clone the Class Repo
 
-- Login to the yens
+- `ssh` to the yens
+
+- Remove all kernels you made and folders you copied or made in Day 1 and Day 2
+
+    ```
+    # activate old env that has jupyter installed
+    source <old-env>/bin/activate
+
+    # list kernels
+    jupyter kernelspec list
+
+    # uninstall kernel by name
+    jupyter kernelspec uninstall <kernel-name>
+
+    # deactivate venv 
+    deactivate
+
+    # cd to your home
+    cd
+
+    # clean up directories from Day 1 and Day 2
+    rm -r <folder-name>
+    ```
 
 - Copy a repo with exercises for Day 3:
     ```
@@ -75,25 +97,25 @@ A legend we will use:
 
 - ❓: What is the script doing?
 
-- Run it using the virtual env python you just made
+- Run it using the virtual env you just made
 
 - ❓: What do you see? 
 
 - 🟩/🟥 
 
-###✏️  Conceptualizing Resources on a Shared Cluster
+### ✏️  Conceptualizing Resources on a Shared Cluster
 #### Research Project
 
   - **What** am I doing?
   - **Where** am I doing it?
   - **How** am I doing it?  
 
-####✏️  1. **Where** am I cooking?
+#### ✏️  1. **Where** am I cooking?
 - ❓: Pro's / con's
 - Kitchen demo!
  
 
-####✏️  2. **How** am I cooking it? 
+#### ✏️  2. **How** am I cooking it? 
 
 ### 💻 Exercise 3: Run python script again 
 
@@ -115,9 +137,9 @@ A legend we will use:
 
 - 🟩/🟥
 
-####✏️  Interactive Yens
+#### ✏️  Interactive Yens
 
-####✏️  Yen-Slurm Cluster
+#### ✏️  Yen-Slurm Cluster
 
 ### 💻 Exercise 5: Let's make a slurm script to run our research code to process one Form 3 file
 
@@ -163,8 +185,13 @@ sbatch slurm/extract_form_3_one_file.slurm
 ### Discussion
 
 -❓ What will happen if you underestimage the time your script needs? 
+
 -❓ What will happen if you overestimate the time your script needs? 
+
 -❓ What will happen if you underestimage the CPU cores your script needs? 
+
 -❓ What will happen if you overestimate the CPU cores your script needs? 
+
 -❓ What will happen if you underestimate the RAM your script needs? 
+
 -❓ What will happen if you overestimate the RAM your script needs? 
