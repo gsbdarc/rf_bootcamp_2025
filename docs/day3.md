@@ -141,14 +141,14 @@ A legend we will use:
 
 #### ✏️  Yen-Slurm Cluster
 
-### 💻 Exercise 5: Let's make a slurm script to run our research code to process one Form 3 file
+### ✏️  Exercise 5: Let's make a slurm script to run our research code to process one Form 3 file
 
 - Slurm flags
 - Request appropriate resources
 - Activate venv we made
 - Call python script
 
-Let's submit it:
+### 💻 Let's submit it:
 
 ```
 sbatch slurm/extract_form_3_one_file.slurm
