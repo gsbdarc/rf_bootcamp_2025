@@ -502,7 +502,7 @@ To do this, you will want to:
 * Write a prompt to extract the information we care about in the SEC filing;
 * Send that model to the OpenAI API and confirm you get a structured output back.
 
-Here's an example for a setting in which we want to query the names and prices of items on a lunch menu:
+Here's an example for a setting in which we want to query the name and price of an item on a lunch menu:
 
 ```python
 import os
