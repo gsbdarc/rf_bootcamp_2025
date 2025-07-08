@@ -480,9 +480,24 @@ sec_doc = open(filing_path).read()
 display(HTML(sec_doc))
 ```
 
-Now, you pass the document and use the LLM to extract a useful piece of information.
+Now, you pass the document and use the LLM to extract a useful piece of information. Try changing the *system prompt* to describe what you want from the document, and then just pass `sec_doc` as the user prompt. Here's a simple example:
 
-#### 4.4 OpenAI with Structured Outputs
+        {"role": "system", "content": "You are a terse assistant that reads SEC Form 3 documents and extracts a list of the names of all of the attorneys-in-fact."},
+        {"role": "user", "content": sec_doc}
+
+#### 4.4 From Jupyter to Command Line
+
+A notebook is a great place to *explore*, investigating data, testing things out, and developing skills. Let's make a cell in our notebook that concisely does the following:
+
+* Load the relevant packages
+* Set up your OpenAI client (using `dotenv`)
+* Set up the path to your sample SEC document
+* Call the OpenAI model to extract information from the sample document
+* Print the results from OpenAI
+
+Once you've prepared that cell, copy its contents to a new file called `form3_test.py`. Run it in the terminal and verify that it works.
+
+#### 4.5 OpenAI with Structured Outputs
 
 We're not out of time yet? Amazing!
 
