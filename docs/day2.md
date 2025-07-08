@@ -10,17 +10,17 @@ updateDate: 2025-06-17
 ## Learning Goals
 By the end of today you will be able to
 
-- understand what a "path" is and why it matters
+- understand what a "path" is and why it matters;
 
 - create and activate **Python virtual environments** on Yens;
 
-- understand how a virtual environment can assist with reproducible code
+- understand how a virtual environment can assist with reproducible code;
 
 - open and run **Jupyter notebooks** in JupyterHub;
 
-- understand how to manage passwords and other "secrets" in your code
+- understand how to manage passwords and other "secrets" in your code;
 
-- Run API calls to OpenAI from JupyterHub.
+- run API calls to OpenAI from JupyterHub.
 
 
 
@@ -55,7 +55,7 @@ You should see the folders you created on the previous day, including your exerc
 - Click the **Terminal** icon to launch a shell (we’ll use it for environment commands).
 
 
-#### Exercise 1.1 -First Notebook Cells
+#### Exercise 1.1: First Notebook Cells
 
 Copy each of the following into separate cells in your notebook, then run them using `Shift + Enter.`
 
@@ -76,9 +76,31 @@ numbers = [1, 2, 3, 4, 5]
 print(sum(numbers))
 ```
 
+#### Exercise 1.2: Saving + Running Python Scripts
 
+Open the terminal tab you started above and run:
 
-#### Exercise 1.2 — Jupyter Terminal Basics
+```bash 
+touch interactive.py
+```
+
+Now find the script in your finder, double click on it, and paste the code you wrote above into `interactive.py` (save the file once you're done).
+
+To verify that it works, run 
+```bash 
+python interactive.py
+```
+and check that you get the following output:
+
+```
+Hello, World!
+3.141592653589793
+15
+```
+
+If you ever need to run a Python script in the future (for instance, later in this course), you can now use the script you created as a starting point.
+
+#### Exercise 1.3: Jupyter Terminal Basics
 
 Open the terminal tab you started above and try:
 
@@ -96,7 +118,7 @@ ls
 which python3
 ```
 
-#### Exercise 1.3: — Display a Pokémon Image
+#### Exercise 1.4: Display a Pokémon Image
 
 1. Locate any PNG in your images folder (use the file browser or ls). 
 
@@ -114,7 +136,7 @@ img = Image.open(img_path)
 display(img)
 ```
 
-#### Exercise 1.4: — Manipulate an image on the terminal
+#### Exercise 1.5: Manipulate an image on the terminal
 
 1. Let's manipulate an image on the terminal using a tool called `imagemagick`.
 
@@ -464,12 +486,16 @@ Now, you pass the document and use the LLM to extract a useful piece of informat
 
 We're not out of time yet? Amazing!
 
-We're going to extract key information from a Form 3 filing, including the insider’s name, their role(s), the company name, CIK, and filing date — and return it in a structured, standardized format (e.g., JSON or dictionary).
+We're going to extract key information from a Form 3 filing, which is a filing company officers and directors ("insiders") have to submit to the SEC to disclose their financial interests and prevent things like insider trading. Each Form 3 filing includes the insider’s name, their role(s), the company name, CIK (an index for companies and individuals filing with the SEC), and the filing date.
 
-This will make the data easy to validate, analyze, and store for downstream use (like building a dataset or running queries).
+We want to find and return this information in a structured, standardized format (e.g., JSON or a dictionary). This will make the data easy to validate, analyze, and store for downstream use (like building a dataset or running queries).
 
-* Write a system prompt that's going to extract the information listed above.
+Your task is to:
+* Write a system prompt that's going to extract the information listed above (i.e., the insider's name, role, etc.).
 * Try running it.
+
+
+**TODO: RETURN AND CONTINUE FROM HERE**
 
 Now, we're going to using **structured outputs** to ensure that OpenAI returns a consistent format. We'll use a library called `pydantic` to define what that format is.
 
