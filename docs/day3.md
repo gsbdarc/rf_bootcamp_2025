@@ -115,12 +115,14 @@ pip install -r requirements.txt
   - **Where** am I doing it?
   - **How** am I doing it?  
 
-### ✏️  1. **Where** am I cooking?
+### ✏️  Let us cook! 
+Analogy: Research computing as a kitchen 
+
+### ✏️  **Where** am I cooking?
 - ❓: Pro's / con's
 - Kitchen demo!
- 
 
-### ✏️  2. **How** am I cooking it? 
+### ✏️  **How** am I cooking it? 
 
 ### 💻 Exercise 3: Run python script again 
 
@@ -184,6 +186,12 @@ pip install -r requirements.txt
 - Save the file.
 
 - 🟩/🟥
+
+Discussion:
+
+- `%j` in job name
+- `log` directory for logs
+- paths! (remember day 2?)
 
 ### 💻 Let's submit it:
 
