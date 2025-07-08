@@ -36,7 +36,6 @@ Let's start by downloading some scripts to the Yens, making a new virtual env an
 A legend we will use:
 - 💻: means "use terminal on the Yens"
 - ✏️ : means "we will white board this"
-- 🐍: means "python script" 
 - ❓: question for class
 - 🟩/🟥: means "put up the colored sticky once you finish the exercise / ask for help"
 
@@ -104,18 +103,18 @@ A legend we will use:
 - 🟩/🟥 
 
 ### ✏️  Conceptualizing Resources on a Shared Cluster
-#### Research Project
+### Research Project
 
   - **What** am I doing?
   - **Where** am I doing it?
   - **How** am I doing it?  
 
-#### ✏️  1. **Where** am I cooking?
+### ✏️  1. **Where** am I cooking?
 - ❓: Pro's / con's
 - Kitchen demo!
  
 
-#### ✏️  2. **How** am I cooking it? 
+### ✏️  2. **How** am I cooking it? 
 
 ### 💻 Exercise 3: Run python script again 
 
@@ -137,16 +136,57 @@ A legend we will use:
 
 - 🟩/🟥
 
-#### ✏️  Interactive Yens
+### ✏️  Interactive Yens
 
-#### ✏️  Yen-Slurm Cluster
+### ✏️  Yen-Slurm Cluster
 
-### ✏️  Exercise 5: Let's make a slurm script to run our research code to process one Form 3 file
+### 💻  Exercise 5: Let's make a slurm script to run our research code to process one Form 3 file
 
-- Slurm flags
-- Request appropriate resources
+- Make a new file called `extract_form_3_one_file.slurm`
+
+- Make file line to be:
+  ```
+  #!/bin/bash
+  ```
+
+- Add Slurm flags that request appropriate resources
+
+  ```
+  #SBATCH --job-name=<job-name>
+  #SBATCH --output=<output-file.out>
+  #SBATCH --time=<time>
+  #SBATCH --mem=<RAM>
+  #SBATCH --cpus-per-task=<cores>
+  #SBATCH --mail-type=<alert-types>
+  #SBATCH --mail-user=<your_email@stanford.edu>
+  ```
+
+  Let's modify each one. For example,
+
+  ```
+  #SBATCH --job-name=extract-one-file
+  #SBATCH --output=logs/extract-one-file-%j.out
+  #SBATCH --time=01:00:00
+  #SBATCH --mem=4G
+  #SBATCH --cpus-per-task=1
+  #SBATCH --mail-type=ALL
+  ```
+
 - Activate venv we made
+  ```
+  # Navigate to your project
+  cd rf_bootcamp_2025/exercises
+
+  # Activate virtual environment
+  source venv/bin/activate
+  ```
+
 - Call python script
+  ```
+  python scripts/extract_form_3_one_file.py
+  ```
+
+- Save the file.
 
 ### 💻 Let's submit it:
 
