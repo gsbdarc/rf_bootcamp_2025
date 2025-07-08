@@ -511,7 +511,7 @@ from openai import OpenAI
 from pydantic import BaseModel, Field
 
 # Load environment variables
-load_dotenv("/zfs/projects/darc/rf_bootcamp_2025/.env")
+load_dotenv('/scratch/shared/rf_bootcamp_2025/.env')
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Define pydantic model specifying desired LLM outputs
@@ -546,11 +546,11 @@ user_prompt = """
 
 # Tell the LLM what to do
 system_prompt = """
-    You are at a cafeteria and you want to extract the names and prices of all the menu items before making a decision about what to eat. 
+    You are at a cafeteria and you want to extract the name and price of the cheeseburger on the menu.
     Please extract the following fields:
     
-    - name: The name of the menu item.
-    - price: The price, in dollars, of the menu item.
+    - name: The name of the cheeseburger item.
+    - price: The price, in dollars, of the cheeseburger item.
 
     Return valid JSON matching the provided Pydantic model.
 """
