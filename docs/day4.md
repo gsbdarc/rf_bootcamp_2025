@@ -33,6 +33,9 @@ Today, we're going to cover:
 * Scaling up jobs on the Yens and running things in parallel; and
 * How to document your work and retrieve results from the Yens onto your laptop.
 
+> [!IMPORTANT]  
+> Before we continue, let's take the pulse of the class. With a show of hands, was yesterday's class a) too fast, b) too slow, or c) about right?
+
 ## Review: Submitting Batch Jobs on the Yens
 
 We noticed that some people got stuck on the last part of yesterday's class, so we're going to review this before moving on to newer topics. 
@@ -131,22 +134,34 @@ source venv/bin/activate
 python extract_form_3_one_file.py
 ```
 
-## Day 4 Learning Goals
+## Organizing Projects
 
-Today is our last day! Hopefully you'll agree that we've already learned a lot: how to use the command line, what paths are, how to use Jupyter notebooks, interact with APIs, and submit simple jobs to the Yens computing cluster. 
+We saw in the previous example that paths are really important, and that they can be easy to get wrong. But note that the previous example was just small-scale! In practice, many of you will be interfacing with much larger codebases in your research, making this problem potentially more severe.
 
-We want to end by getting you another step closer to being a Stanford GSB computing power user. To do this, we're going to talk about the following:
+What are some ways we can make projects easy to navigate, understand, and keep tidy? 
 
-- How to structure and document reproducible, scalable work on a cluster;
+> [!IMPORTANT]  
+> Remember: Understanding your past self's work can be as difficult as understanding someone else's work.
 
-- How to re-run your data pipeline when new data arrives, without repeating completed work;
+Consider the following set of files (taking from our `rf_bootcamp_2025/exercises` subdirectory): 
+```bash 
+extract_form_3_one_file.py
+form_3_10.csv
+extract_form_3_one_file_broken.slurm
+fix_me_2.slurm
+requirements.txt 
+fix_me_3.slurm
+README.md
+fix_me.slurm
+extract_form_3_one_file_broken.py
+mystery_script.py
+my-first-job-20425.out
+```
+How would you organize them? 
 
-- How to document your work and retrieve results back to your local machine.
-
-We'll build up from a simple data extraction task to more scalable cluster workflows. This is also a good moment to reinforce good project organization practices you should follow in your research projects.
-
-### Example Project Directory
-
+> [!NOTE]
+> Note that there is no one "correct" way to organize a project. But there _are_ good conventions.
+<!-- 
 Here is a directory structure for this project:
 
 ```
@@ -178,7 +193,7 @@ exercises/
 ├── venv/                  # Virtual environment
 ├── requirements.txt       # Python dependencies
 └── README.md              # Short project documentation
-```
+``` -->
 
 
 ### Single File Processing for Testing and Debugging
