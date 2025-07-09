@@ -45,31 +45,32 @@ Let's walk through together:
 cd rf_bootcamp_2025/exercises
 ```
 
-3. **If you didn't do so yesterday**, create a directory from `rf_bootcamp_2025/exercises` called `slurm`: 
+<!-- 3. **If you didn't do so yesterday**, create a directory from `rf_bootcamp_2025/exercises` called `slurm`: 
 ```bash
 mkdir slurm
-```
+``` -->
 <!-- TODO: Add `hint` style blocks on the website to pause for questions -->
-4. **Inside** the `slurm` directory, create a SLURM script called `my_first_slurm_script.slurm` that we'll use to run code **non-interactively** on the Yens. If you're in Jupyter, you can do this by creating a file using the graphical user interface. Alternately, you can run the following from within the `slurm` directory you just created.
+3. **Inside** the `slurm` directory, create a SLURM script called `my_first_slurm_script.slurm` that we'll use to run code **non-interactively** on the Yens. If you're in Jupyter, you can do this by creating a file using the graphical user interface. Alternately, you can run the following from within the `slurm` directory you just created.
 ```bash
-touch <insert-name-of-slurm-script>.slurm
+touch my_first_slurm_script.slurm
 ```
 
 
 > [!IMPORTANT]  
 > Who can tell me the difference between the interactive and non-interactive nodes on the Yens?
 
-5. Populate your `.slurm` script with the following content (remember to update the line with `--mail-user` with your Stanford email address): 
+4. Populate your `.slurm` script with the following content (remember to update the line with `--mail-user` with your Stanford email address): 
 
 <!-- TODO: Figure out the correct file structure here -->
 ```bash
+#!/bin/bash
 #SBATCH --job-name=my-first-job
 #SBATCH --output=logs/my-first-job-%j.out
 #SBATCH --time=00:10:00
 #SBATCH --mem=4GB
 #SBATCH --cpus-per-task=1
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=<insert-your-email@stanford.edu>
+#SBATCH --mail-user=<insert-your-email>@stanford.edu
 
 # Navigate to your project
 cd $HOME/rf_bootcamp_2025/exercises
@@ -84,8 +85,8 @@ python scripts/extract_form_3_one_file.py
 > [!IMPORTANT]  
 > Can someone explain to me what each section here does?
 
-6. Create a `logs` subdirectory **within** your `slurm` directory. We'll save the outputs from our SLURM jobs to this `logs` subdirectory so we can verify the job's outputs if it ran successfully (or else see where it went wrong).
-7. We're now ready to submit our job to the Yens via SLURM. To do so, run 
+5. Create a `logs` subdirectory **within** your `slurm` directory. We'll save the outputs from our SLURM jobs to this `logs` subdirectory so we can verify the job's outputs if it ran successfully (or else see where it went wrong).
+6. We're now ready to submit our job to the Yens via SLURM. To do so, run 
 ```bash
 sbatch my_first_slurm_script.slurm
 ```
@@ -106,15 +107,29 @@ source venv/bin/activate
 pip install -r requirements.txt
 ``` -->
 
+### Common Pitfalls We Saw
 
+What's wrong with the following SLURM script? There are at least four issues; let's find them together.
 
+```bash
+#!/bin/bash
+#SBATCH --job-name=my-first-job
+#SBATCH --output=logs/my-first-job.out/%j
+#SBATCH --time=00:10:00
+#SBATCH --mem=4GB
+#SBATCH --cpus-per-task=1
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=<insert-your-email>@stanford.edu
 
+# Navigate to your project
+cd rf_bootcamp_2025/
 
+# Activate your virtual environment 
+source venv/bin/activate
 
-
-
-
-
+# Call the main Python script we want to run 
+python extract_form_3_one_file.py
+```
 
 ## Day 4 Learning Goals
 
