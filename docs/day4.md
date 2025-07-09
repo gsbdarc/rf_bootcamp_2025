@@ -50,7 +50,7 @@ cd rf_bootcamp_2025/exercises
 mkdir slurm
 ```
 <!-- TODO: Add `hint` style blocks on the website to pause for questions -->
-4. **Inside** the `slurm` directory, create a SLURM script that we'll use to run code **non-interactively** on the Yens. If you're in Jupyter, you can do this by creating a file using the graphical user interface. Alternately, you can run the following from within the `slurm` directory you just created.
+4. **Inside** the `slurm` directory, create a SLURM script called `my_first_slurm_script.slurm` that we'll use to run code **non-interactively** on the Yens. If you're in Jupyter, you can do this by creating a file using the graphical user interface. Alternately, you can run the following from within the `slurm` directory you just created.
 ```bash
 touch <insert-name-of-slurm-script>.slurm
 ```
@@ -84,7 +84,12 @@ python scripts/extract_form_3_one_file.py
 > [!IMPORTANT]  
 > Can someone explain to me what each section here does?
 
-6. Create a `logs` subdirectory **within** your `slurm` directory. We'll save the outputs from our SLURM jobs to this `logs` subdirectory so we can verify the job's outputs if it ran successfully(or else see where it went wrong).
+6. Create a `logs` subdirectory **within** your `slurm` directory. We'll save the outputs from our SLURM jobs to this `logs` subdirectory so we can verify the job's outputs if it ran successfully (or else see where it went wrong).
+7. We're now ready to submit our job to the Yens via SLURM. To do so, run 
+```bash
+sbatch my_first_slurm_script.slurm
+```
+Navigate to the `logs` subdirectory and inspect the output file (either in Jupyter, or in the command line using `cat <insert-name-of-output-file>.out`). Once you've verified that the job ran successfully, please put a green sticky note (🟩) on the back of your laptop.
 
 <!-- **If you need to clone the repository again**, run the snippet below _in your home directory_:
 ```bash
