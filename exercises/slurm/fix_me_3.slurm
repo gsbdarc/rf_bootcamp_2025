@@ -8,6 +8,8 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=your_email@stanford.edu
 
+cd 
+
 source venv/bin/activate
 
 # Run the python script

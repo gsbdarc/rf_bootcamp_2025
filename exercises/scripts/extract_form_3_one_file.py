@@ -49,6 +49,6 @@ response = client.responses.parse(
     text_format=Form3Filing,
 )
 
-filing = response.output_parsed
+output_parsed = response.output_parsed
 
-print(filing.model_dump())
+print(output_parsed.model_dump())

@@ -8,8 +8,5 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=your_email@stanford.edu
 
-# Navigate to your project
-cd /zfs/projects/darc/rf_bootcamp_2025/exercises
-
 # Run the python script
 python scripts/extract_form_3_one_file.py 
