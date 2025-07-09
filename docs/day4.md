@@ -8,15 +8,27 @@ updateDate: 2025-06-18
 
 # {{ page.title }}
 
-## Objectives
+## Recap: Day 3
 
-- How do you structure and document reproducible, scalable work on a cluster?
+Yesterday, we: 
+* Walked through creating and sharing reproducible Python environments;
+* Thought through how resources are shared on the Yens cluster;
+* Learned how to submit jobs to the Yens scheduler (via SLURM); 
+* Starting thinking about how to deal with computing jobs that fail.
 
-- How do you rerun your pipeline when new data arrives without repeating completed work?
+## Day 4 Objectives
 
-- How do you document your process and retrieve results back to your local machine?
+Today is our last day! Hopefully you'll agree that we've already learned a lot: how to use the command line, what paths are, how to use Jupyter notebooks, interact with APIs, and submit simple jobs to the Yens computing cluster. 
 
-On Day 4, we'll build up from a simple data extraction task to more scalable cluster workflows. This is also a perfect moment to reinforce good project organization practices you should follow in your research projects.
+We want to end by getting you another step closer to being a Stanford GSB computing power user. To do this, we're going to talk about the following:
+
+- How to structure and document reproducible, scalable work on a cluster;
+
+- How to rerun your data pipeline when new data arrives, without repeating completed work;
+
+- How to document your work and retrieve results back to your local machine.
+
+We'll build up from a simple data extraction task to more scalable cluster workflows. This is also a good moment to reinforce good project organization practices you should follow in your research projects.
 
 ### Example Project Directory
 
