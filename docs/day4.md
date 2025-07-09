@@ -31,16 +31,75 @@ Today, we're going to cover:
 * Best practices for organizing your code;
 * How to handle jobs ending unexpectedly, _without losing all of your work_; 
 * Scaling up jobs on the Yens and running things in parallel; and
-* How to document your work and retrieve code outputs from the Yens onto your laptop.
+* How to document your work and retrieve results from the Yens onto your laptop.
 
 ## Review: Submitting Batch Jobs on the Yens
 
-We noticed that some people got stuck on this step yesterday, so we're going to review the last part of yesterday's class before moving on to newer topics. 
-Let's walk through together: 
-1. Something 
-2. Something else 
-3. TBD.
+We noticed that some people got stuck on the last part of yesterday's class, so we're going to review this before moving on to newer topics. 
 
+Remember, we wanted to write a `.slurm` script that runs our Python script on the Yens and saves its output to an output file (ending in `.out`).
+Let's walk through together: 
+1. First, `ssh` onto the Yens.
+2. Navigate to the `exercises` subdirectory of the repository you "cloned" (i.e. downloaded) yesterday. You should be able to get there by running the following in your home directory:
+```bash
+cd rf_bootcamp_2025/exercises
+```
+
+3. **If you didn't do so yesterday**, create a directory from `rf_bootcamp_2025/exercises` called `slurm`: 
+```bash
+mkdir slurm
+```
+<!-- TODO: Add `hint` style blocks on the website to pause for questions -->
+4. **Inside** the `slurm` directory, create a SLURM script that we'll use to run code **non-interactively** on the Yens. If you're in Jupyter, you can do this by creating a file using the graphical user interface. Alternately, you can run the following from within the `slurm` directory you just created.
+```bash
+touch <insert-name-of-slurm-script>.slurm
+```
+
+
+> [!IMPORTANT]  
+> Who can tell me the difference between the interactive and non-interactive nodes on the Yens?
+
+5. Populate your `.slurm` script with the following content (remember to update the line with `--mail-user` with your Stanford email address): 
+
+<!-- TODO: Figure out the correct file structure here -->
+```bash
+#SBATCH --job-name=my-first-job
+#SBATCH --output=logs/my-first-job-%j.out
+#SBATCH --time=00:10:00
+#SBATCH --mem=4GB
+#SBATCH --cpus-per-task=1
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=<insert-your-email@stanford.edu>
+
+# Navigate to your project
+cd $HOME/rf_bootcamp_2025/exercises
+
+# Activate your virtual environment 
+source venv/bin/activate
+
+# Call the main Python script we want to run 
+python scripts/extract_form_3_one_file.py
+```
+
+> [!IMPORTANT]  
+> Can someone explain to me what each section here does?
+
+6. Create a `logs` subdirectory **within** your `slurm` directory. We'll save the outputs from our SLURM jobs to this `logs` subdirectory so we can verify the job's outputs if it ran successfully(or else see where it went wrong).
+
+<!-- **If you need to clone the repository again**, run the snippet below _in your home directory_:
+```bash
+git clone https://github.com/gsbdarc/rf_bootcamp_2025.git
+```
+3. Activate the virtual environment you created yesterday:
+```bash
+source venv/bin/activate
+```
+**If you need to create your virtual environment again**, run: 
+```bash
+/usr/bin/python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+``` -->
 
 
 
