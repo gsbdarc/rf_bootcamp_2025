@@ -10,13 +10,49 @@ updateDate: 2025-06-18
 
 ## Recap: Day 3
 
-Yesterday, we: 
-* Walked through creating and sharing reproducible Python environments;
-* Thought through how resources are shared on the Yens cluster;
-* Learned how to submit jobs to the Yens scheduler (via SLURM); 
-* Starting thinking about how to deal with computing jobs that fail.
+Yesterday, we learned about: 
+* Creating and _sharing_ reproducible Python environments;
+* How resources are shared on the Yens cluster;
+* How to submit jobs to the Yens scheduler (via SLURM); 
 
-## Day 4 Objectives
+<!-- Take a quick poll: was yesterday too fast, too slow? -->
+
+## Day 4 Learning Goals: 
+
+We want to close the loop on what we've learned and finish laying the foundations for you to become power users of Stanford GSB's computing resources. 
+So far, we've learned: 
+* How to use the command line;
+* What "paths" are;
+* How to use Jupyter notebooks and write Python scripts;
+* How to interact with APIs; and 
+* How to submit simple jobs to the Yens cluster.
+
+Today, we're going to cover: 
+* Best practices for organizing your code;
+* How to handle jobs ending unexpectedly, _without losing all of your work_; 
+* Scaling up jobs on the Yens and running things in parallel; and
+* How to document your work and retrieve code outputs from the Yens onto your laptop.
+
+## Review: Submitting Batch Jobs on the Yens
+
+We noticed that some people got stuck on this step yesterday, so we're going to review the last part of yesterday's class before moving on to newer topics. 
+Let's walk through together: 
+1. Something 
+2. Something else 
+3. TBD.
+
+
+
+
+
+
+
+
+
+
+
+
+## Day 4 Learning Goals
 
 Today is our last day! Hopefully you'll agree that we've already learned a lot: how to use the command line, what paths are, how to use Jupyter notebooks, interact with APIs, and submit simple jobs to the Yens computing cluster. 
 
@@ -24,7 +60,7 @@ We want to end by getting you another step closer to being a Stanford GSB comput
 
 - How to structure and document reproducible, scalable work on a cluster;
 
-- How to rerun your data pipeline when new data arrives, without repeating completed work;
+- How to re-run your data pipeline when new data arrives, without repeating completed work;
 
 - How to document your work and retrieve results back to your local machine.
 
