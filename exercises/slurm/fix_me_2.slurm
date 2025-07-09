@@ -8,9 +8,6 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=your_email@stanford.edu
 
-# Navigate to your project
-cd /zfs/projects/darc/rf_bootcamp_2025/exercises
-
 source venv/bin/activate
 
 # Run the python script
