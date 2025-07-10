@@ -45,13 +45,13 @@ We noticed that some people got stuck on the last part of yesterday's class, so 
 
 Remember, we wanted to write a `.slurm` script that runs our Python script on the Yens and saves its output to an output file (ending in `.out`).
 Let's walk through together: 
-1. First, `ssh` onto the Yens.
-2. Navigate to the `exercises/slurm` subdirectory of the repository you "cloned" (i.e. downloaded) yesterday. You should be able to get there by running the following in your home directory:
+* First, `ssh` onto the Yens.
+* Navigate to the `exercises/slurm` subdirectory of the repository you "cloned" (i.e. downloaded) yesterday. You should be able to get there by running the following in your home directory:
 ```bash
 cd rf_bootcamp_2025/exercises/slurm
 ```
 
-3. **Inside** the `slurm` directory, create a SLURM script called `my_first_slurm_script.slurm` that we'll use to run code **non-interactively** on the Yens. If you're in Jupyter, you can do this by creating a file using the graphical user interface. Alternately, you can run the following from within the `slurm` directory:
+* **Inside** the `slurm` directory, create a SLURM script called `my_first_slurm_script.slurm` that we'll use to run code **non-interactively** on the Yens. If you're in Jupyter, you can do this by creating a file using the graphical user interface. Alternately, you can run the following from within the `slurm` directory:
 ```bash
 touch my_first_slurm_script.slurm
 ```
@@ -60,12 +60,12 @@ touch my_first_slurm_script.slurm
 {: .note }
 > Who can tell me the difference between the interactive and non-interactive nodes on the Yens?
 
-4. If you didn't yesterday, create a `log` directory in which we'll write output files from our SLURM scripts (we use these to see whether a job ran as expected):
+* If you didn't yesterday, create a `log` directory in which we'll write output files from our SLURM scripts (we use these to see whether a job ran as expected):
 ```bash 
 mkdir logs
 ```
 
-5. Populate your `.slurm` script with the following content (remember to update the line with `--mail-user` with your Stanford email address): 
+* Populate your `.slurm` script with the following content (remember to update the line with `--mail-user` with your Stanford email address): 
 
 ```bash
 #!/bin/bash
@@ -91,7 +91,7 @@ python scripts/extract_form_3_one_file.py
 > Can someone explain to me what each section here does?
 
 
-6. We're now ready to submit our job to the Yens via SLURM. To do so, run 
+* We're now ready to submit our job to the Yens via SLURM. To do so, run 
 ```bash
 sbatch my_first_slurm_script.slurm
 ```
@@ -208,9 +208,9 @@ if "pharma" in filing_text.lower():
 > Can someone walk us through what this file is doing?
 
 **Questions for you:**
-1. How is this script useful, even if it doesn't let us extract information from more than one SEC filing?
-2. What might be one way to change our script so that it processes multiple files? **Let's write out the modifications in pseudocode.**
-3. Imagine you want to submit our modified Python script to run non-interactively on the Yens? Do we need to change our SLURM script, and how?
+* How is this script useful, even if it doesn't let us extract information from more than one SEC filing?
+* What might be one way to change our script so that it processes multiple files? **Let's write out the modifications in pseudocode.**
+* Imagine you want to submit our modified Python script to run non-interactively on the Yens? Do we need to change our SLURM script, and how?
 <!-- 4. What might go wrong with our modified Python script? Are we using all the computing resources available to us? -->
 
 {: .note }
@@ -223,8 +223,8 @@ Let's run the modified script. What happens?
 In a script like the one we wrote above, if something fails, we lose all our progress.
 That's OK in our toy example, but imagine you had a job that had been running for a week before failing. That's a lot of lost time and progress.
 
-1. How might we avoid that outcome? **There are three main things we can think about.**
-2. What happens when we run our modified script?
+* How might we avoid that outcome? **There are three main things we can think about.**
+* What happens when we run our modified script?
 <!-- 
 Looking to hear things like:
 1. Saving outputs intermittently 
