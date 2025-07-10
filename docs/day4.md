@@ -37,6 +37,8 @@ Today, we're going to cover:
 > [!IMPORTANT]  
 > Before we continue, let's take the pulse of the class. With a show of hands, was yesterday's class a) too fast, b) too slow, or c) about right?
 
+**One other thing for you to note: we'd love to get your feedback on this mini-course. We'll be circulating a survey at the end; if you fill it out, you'll be entered into a raffle for a $50 Coupa coffee gift card.**
+
 ## Review: Submitting Batch Jobs on the Yens
 
 We noticed that some people got stuck on the last part of yesterday's class, so we're going to review this before moving on to newer topics. 
@@ -293,3 +295,12 @@ Your job is to edit that document, and fill in the following details so it's eas
 
 When you're done, please put a green sticky note 🟩 on the back of your laptop so we know you're done. 
 
+## Open-Ended Question Round
+
+We've now walked through four days of material. Are there any lingering questions you still have? Please share — there's a good chance you're not the only one wondering.
+
+## Feedback
+
+We'd love your feedback: what was good, what could we have done better. Please fill out the survey [here](https://docs.google.com/forms/d/1rH-7m3rYdcZxp8QHTLXzgUwteQzvygLWd_MGYEO74xE/edit). 
+
+If you complete it, we'll enter you into a raffle for a $50 Coupa coffee gift card.
