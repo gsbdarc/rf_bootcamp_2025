@@ -254,6 +254,8 @@ However, our code and workflow can still be improved. What's less-than-optimal a
 * Are we using the Yens' resources effectively?
 * Does our problem have a common structure we can exploit?
 
+Let's look at an example script that addresses these points.
+We'll need two components: an **adapted** Python script, and a corresponding SLURM script.
 
 ### Parallel Processing with Slurm Job Arrays
 - Script: `extract_form_3_onefile_array.py`
