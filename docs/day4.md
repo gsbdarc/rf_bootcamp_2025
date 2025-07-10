@@ -226,6 +226,9 @@ if "pharma" in filing_text.lower():
 3. Imagine you want to submit our modified Python script to run non-interactively on the Yens? Do we need to change our SLURM script, and how?
 <!-- 4. What might go wrong with our modified Python script? Are we using all the computing resources available to us? -->
 
+> [!NOTE]
+> Let's talk about this together, live.
+
 Run the modified script. What happens?
 
 ### Building In Fault Tolerance
@@ -242,6 +245,9 @@ Looking to hear things like:
 3. Can also use control flow like `try` and `except`
  -->
 
+ > [!NOTE]
+> Let's talk about this together, live.
+
 ### Moving On From Sequential Processing
 
 Let's recap what we've done so far today:
@@ -254,20 +260,20 @@ However, our code and workflow can still be improved. What's less-than-optimal a
 * Are we using the Yens' resources effectively?
 * Does our problem have a common structure we can exploit?
 
-Let's look at an example script that addresses these points.
+ > [!NOTE]
+> Let's talk about this together, live.
+
+Now let's look at an example script that addresses these points.
 We'll need two components: an **adapted** Python script, and a corresponding SLURM script.
 
-### Parallel Processing with Slurm Job Arrays
-- Script: `extract_form_3_onefile_array.py`
-- Slurm job: `extract_form_3_array.slurm`
-- Uses Slurm job arrays to process files independently and in parallel.
-- Highly efficient for large datasets.
+> [!IMPORTANT]  
+> Using arrays on the Yens has a lot of advantages:
+> * We can maximally exploit the large number of cores on the Yens and finish our work faster;
+> * Since each array job is entirely independent from the others, we still get the same result.
+> However, using arrays is **not** a silver bullet: 
+> * In our example, we assumed we have one array job per filing URL. In practice, it may be more efficient to process several URLs together for one individual array job.
+> * As we've written it, our code spits out one output file per array job. In practice, you still need to combine these into one single data output, ideally using an additional script you'll have to write.
 
-Exercise:
-
-- Discuss how to aggregate results.
-- Discuss the limitations of job arrays on Yen-Slurm.
-- Discuss the limitations of file system on the Yens.
 
 ### Copy Results and Document Your Work
 Exercise:
