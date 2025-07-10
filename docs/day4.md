@@ -233,24 +233,26 @@ Run the modified script. What happens?
 In a script like the one we wrote above, if something fails, we lose all our progress.
 That's OK in our toy example, but imagine you had a job that had been running for a week before failing. That's a lot of lost time and progress.
 
-How might we avoid that outcome?
+1. How might we avoid that outcome?
+2. What happens when we run our modified script?
 <!-- 
 Looking to hear things like:
 1. Saving outputs intermittently 
 2. Skipping over already processed inputs
+3. Can also use control flow like `try` and `except`
  -->
 
+### Moving On From Sequential Processing
 
+Let's recap what we've done so far today:
+* We started with a script that operates on a **single** SEC filing.
+* We generalized that script to handle **multiple** SEC filings.
+* We made the script more **robust** to unexpected errors.
 
-- Script: `extract_form_3_batch_checkpoint.py`
-- Slurm job: `extract_form_3_batch_checkpoint.slurm`
-- Adds checkpointing logic: tracks completed files and resumes on failure.
-- A common pattern for long-running research jobs.
-
-Exercise:
-
-- Simulate a failure by forcing the job to stop after a few files.
-- Restart the job and verify it skips already completed files.
+<!-- TODO: Is Python capitalized? -->
+However, our code and workflow can still be improved. What's less-than-optimal about our Python script? 
+* Are we using the Yens' resources effectively?
+* Does our problem have a common structure we can exploit?
 
 
 ### Parallel Processing with Slurm Job Arrays
