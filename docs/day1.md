@@ -1,5 +1,5 @@
 ---
-title: Day 1
+title: Day 1 — Introduction to the Yens
 layout: page
 nav_order: 1
 updateDate: 2025-06-17
