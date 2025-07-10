@@ -209,7 +209,7 @@ import pandas as pd
 # URL to your filing
 filing_url = "https://rf-bootcamp-2025.s3.us-west-2.amazonaws.com/Form3_files/0000003570-22-000041.txt"
 
-# Request the filing
+# Request the filing from the URL
 response = requests.get(filing_url)
 
 # Get the text from the filing request response
@@ -223,6 +223,10 @@ if "pharma" in filing_text.lower():
 **Questions for you:**
 1. How is this script useful, even if it doesn't let us extract information from more than one SEC filing?
 2. How do we need to change it to process multiple files?
+3. Imagine you want to submit our modified Python script to run non-interactively on the Yens? Do we need to change our SLURM script, and how?
+4. What might go wrong with our modified Python script? Are we using all the computing resources available to us?
+
+Run the modified script. What happens?
 
 
 ### Single File Processing for Testing and Debugging
