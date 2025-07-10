@@ -15,7 +15,7 @@ Yesterday, we learned about:
 * How resources are shared on the Yens cluster;
 * How to submit jobs to the Yens scheduler.
 
-{: .highlight }
+{: .note }
 > Who can tell me about each of these?
 
 ## Day 4 Learning Goals: 
@@ -34,7 +34,7 @@ Today, we're going to cover:
 * Scaling up jobs on the Yens; and
 * How to document your work and retrieve results from the Yens onto your laptop.
 
-{: .highlight }
+{: .note }
 > Before we continue, let's take the pulse of the class. With a show of hands, was yesterday's class a) too fast, b) too slow, or c) about right?
 
 **One other thing for you to note: we'd love to get your feedback on this mini-course. We'll be circulating a survey at the end; if you fill it out, you'll be entered into a raffle for a $50 Coupa coffee gift card.**
@@ -57,7 +57,7 @@ touch my_first_slurm_script.slurm
 ```
 
 
-{: .highlight }
+{: .note }
 > Who can tell me the difference between the interactive and non-interactive nodes on the Yens?
 
 4. If you didn't yesterday, create a `log` directory in which we'll write output files from our SLURM scripts (we use these to see whether a job ran as expected):
@@ -87,7 +87,7 @@ source venv/bin/activate
 python scripts/extract_form_3_one_file.py
 ```
 
-{: .highlight }
+{: .note }
 > Can someone explain to me what each section here does?
 
 
@@ -213,7 +213,7 @@ if "pharma" in filing_text.lower():
 3. Imagine you want to submit our modified Python script to run non-interactively on the Yens? Do we need to change our SLURM script, and how?
 <!-- 4. What might go wrong with our modified Python script? Are we using all the computing resources available to us? -->
 
-{: .highlight }
+{: .note }
 > Let's talk about this together, live.
 
 Let's run the modified script. What happens?
@@ -232,7 +232,7 @@ Looking to hear things like:
 3. Can also use control flow like `try` and `except`
  -->
 
-{: .highlight }
+{: .note }
 > Let's talk about this together, live.
 
 What happens when we run our modified script?
@@ -249,7 +249,7 @@ However, our code and workflow can still be improved. What's less-than-optimal a
 * Are we using the Yens' resources effectively?
 * Does our problem have a common structure we can exploit?
 
-{: .highlight }
+{: .note }
 > Let's talk about this together, live. We'll draw a graphic to illustrate what we can do differently.
 
 Now let's look at an example script that addresses these points.
@@ -268,7 +268,7 @@ We'll need two components: an **adapted** Python script, and a corresponding SLU
 
 OK! We've now processed a bunch of SEC filings, and have determined for each one whether it relates to the pharmaceuticals industry. 
 
-{: .highlight }
+{: .note }
 > What's left for us to do?
 
 ### Copying Results
