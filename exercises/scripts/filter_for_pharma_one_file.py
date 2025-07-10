@@ -14,3 +14,6 @@ filing_text = response.text
 # Check if the filing is relevant to the pharmaceuticals industry
 if "pharma" in filing_text.lower():
     print(f"Filing at {filing_url} relates to the pharma industry.")
+else: 
+    print(f"Filing at {filing_url} does not relate to the pharma industry.")
+
