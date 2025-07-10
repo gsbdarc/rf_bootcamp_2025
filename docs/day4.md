@@ -37,7 +37,7 @@ Today, we're going to cover:
 {: .note }
 > Before we continue, let's take the pulse of the class. With a show of hands, was yesterday's class a) too fast, b) too slow, or c) about right?
 
-**One other thing for you to note: we'd love to get your feedback on this mini-course. We'll be circulating a survey at the end; if you fill it out, you'll be entered into a raffle for a $50 Coupa coffee gift card.**
+**One other thing for you to note: we'd love to get your feedback on this mini-course. We'll be circulating a survey at the end; if you stay and fill it out, you'll be entered into a raffle for a $50 Coupa coffee gift card.**
 
 ## Review: Submitting Batch Jobs on the Yens
 
