@@ -74,7 +74,7 @@ git clone https://github.com/gsbdarc/rf_bootcamp_2025.git
 - Navigate to the exercises directory and look at the `requirements.txt` file:
 
 ```
-cd rf_bootcamp_2025/exercises
+cd $HOME/rf_bootcamp_2025/exercises
 cat requirements.txt
 ```
 
@@ -172,7 +172,7 @@ Analogy: Research computing as a kitchen
 - Activate venv we made
   ```
   # Navigate to your project
-  cd rf_bootcamp_2025/exercises
+  cd $HOME/rf_bootcamp_2025/exercises
 
   # Activate virtual environment
   source venv/bin/activate
