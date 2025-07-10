@@ -15,7 +15,7 @@ Yesterday, we learned about:
 * How resources are shared on the Yens cluster;
 * How to submit jobs to the Yens scheduler.
 
-> [!NOTE]
+{: .highlight }
 > Who can tell me about each of these?
 
 ## Day 4 Learning Goals: 
@@ -34,7 +34,7 @@ Today, we're going to cover:
 * Scaling up jobs on the Yens; and
 * How to document your work and retrieve results from the Yens onto your laptop.
 
-> [!IMPORTANT]  
+{: .highlight }
 > Before we continue, let's take the pulse of the class. With a show of hands, was yesterday's class a) too fast, b) too slow, or c) about right?
 
 **One other thing for you to note: we'd love to get your feedback on this mini-course. We'll be circulating a survey at the end; if you fill it out, you'll be entered into a raffle for a $50 Coupa coffee gift card.**
@@ -57,7 +57,7 @@ touch my_first_slurm_script.slurm
 ```
 
 
-> [!IMPORTANT]  
+{: .highlight }
 > Who can tell me the difference between the interactive and non-interactive nodes on the Yens?
 
 4. If you didn't yesterday, create a `log` directory in which we'll write output files from our SLURM scripts (we use these to see whether a job ran as expected):
@@ -87,7 +87,7 @@ source venv/bin/activate
 python scripts/extract_form_3_one_file.py
 ```
 
-> [!IMPORTANT]  
+{: .highlight }
 > Can someone explain to me what each section here does?
 
 
@@ -127,7 +127,7 @@ We saw in the previous example that paths are really important, and that they ca
 
 What are some ways we can make projects easy to navigate, understand, and keep tidy? 
 
-> [!IMPORTANT]  
+{: .important }
 > Remember: Understanding your past self's work can be as difficult as understanding someone else's work. Make it easy for yourself and others.
 
 Consider the following set of files (taking from our `rf_bootcamp_2025/exercises` subdirectory): 
@@ -146,8 +146,8 @@ my-first-job-20425.out
 ```
 How would you organize them? 
 
-> [!NOTE]
-> Note that there is no one "correct" way to organize a project. But there _are_ good conventions.
+{: .note }
+> There is no one "correct" way to organize a project. But there _are_ good conventions.
 
 <!-- 
 Here is a directory structure for this project:
@@ -204,7 +204,7 @@ if "pharma" in filing_text.lower():
     print(f"Filing at {filing_url} relates to the pharma industry.")
 ```
 
-> [!NOTE]
+{: .note }
 > Can someone walk us through what this file is doing?
 
 **Questions for you:**
@@ -213,7 +213,7 @@ if "pharma" in filing_text.lower():
 3. Imagine you want to submit our modified Python script to run non-interactively on the Yens? Do we need to change our SLURM script, and how?
 <!-- 4. What might go wrong with our modified Python script? Are we using all the computing resources available to us? -->
 
-> [!NOTE]
+{: .highlight }
 > Let's talk about this together, live.
 
 Let's run the modified script. What happens?
@@ -232,7 +232,7 @@ Looking to hear things like:
 3. Can also use control flow like `try` and `except`
  -->
 
- > [!NOTE]
+{: .highlight }
 > Let's talk about this together, live.
 
 What happens when we run our modified script?
@@ -249,13 +249,13 @@ However, our code and workflow can still be improved. What's less-than-optimal a
 * Are we using the Yens' resources effectively?
 * Does our problem have a common structure we can exploit?
 
-> [!NOTE]
+{: .highlight }
 > Let's talk about this together, live. We'll draw a graphic to illustrate what we can do differently.
 
 Now let's look at an example script that addresses these points.
 We'll need two components: an **adapted** Python script, and a corresponding SLURM script.
 
-> [!IMPORTANT]  
+{: .important }
 > Using arrays on the Yens has a lot of advantages:
 > * We can maximally exploit the large number of cores on the Yens and finish our work faster;
 > * Since each array job is entirely independent from the others, we still get the same result.
@@ -268,7 +268,7 @@ We'll need two components: an **adapted** Python script, and a corresponding SLU
 
 OK! We've now processed a bunch of SEC filings, and have determined for each one whether it relates to the pharmaceuticals industry. 
 
-> [!NOTE]
+{: .highlight }
 > What's left for us to do?
 
 ### Copying Results
@@ -279,7 +279,7 @@ To make things easy for you, we've put the results from processing our SEC filin
 ```
 You want to copy these results onto your local machine to share the results with your advisor. How do you do it?
 
-> [!TIP]
+{: .tip }
 > Remember: Where do we run commands for copying from?
 
 ### Communicating Your Work
