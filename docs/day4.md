@@ -13,9 +13,10 @@ updateDate: 2025-06-18
 Yesterday, we learned about: 
 * Creating and _sharing_ reproducible Python environments;
 * How resources are shared on the Yens cluster;
-* How to submit jobs to the Yens scheduler (via SLURM); 
+* How to submit jobs to the Yens scheduler.
 
-<!-- Take a quick poll: was yesterday too fast, too slow? -->
+> [!NOTE]
+> Who can tell me about each of these?
 
 ## Day 4 Learning Goals: 
 
@@ -29,8 +30,8 @@ So far, we've learned:
 
 Today, we're going to cover: 
 * Best practices for organizing your code;
-* How to handle jobs ending unexpectedly, _without losing all of your work_; 
-* Scaling up jobs on the Yens and running things in parallel; and
+* How to handle jobs ending unexpectedly; 
+* Scaling up jobs on the Yens; and
 * How to document your work and retrieve results from the Yens onto your laptop.
 
 > [!IMPORTANT]  
@@ -43,17 +44,12 @@ We noticed that some people got stuck on the last part of yesterday's class, so 
 Remember, we wanted to write a `.slurm` script that runs our Python script on the Yens and saves its output to an output file (ending in `.out`).
 Let's walk through together: 
 1. First, `ssh` onto the Yens.
-2. Navigate to the `exercises` subdirectory of the repository you "cloned" (i.e. downloaded) yesterday. You should be able to get there by running the following in your home directory:
+2. Navigate to the `exercises/slurm` subdirectory of the repository you "cloned" (i.e. downloaded) yesterday. You should be able to get there by running the following in your home directory:
 ```bash
-cd rf_bootcamp_2025/exercises
+cd rf_bootcamp_2025/exercises/slurm
 ```
 
-<!-- 3. **If you didn't do so yesterday**, create a directory from `rf_bootcamp_2025/exercises` called `slurm`: 
-```bash
-mkdir slurm
-``` -->
-
-3. **Inside** the `slurm` directory, create a SLURM script called `my_first_slurm_script.slurm` that we'll use to run code **non-interactively** on the Yens. If you're in Jupyter, you can do this by creating a file using the graphical user interface. Alternately, you can run the following from within the `slurm` directory you just created.
+3. **Inside** the `slurm` directory, create a SLURM script called `my_first_slurm_script.slurm` that we'll use to run code **non-interactively** on the Yens. If you're in Jupyter, you can do this by creating a file using the graphical user interface. Alternately, you can run the following from within the `slurm` directory:
 ```bash
 touch my_first_slurm_script.slurm
 ```
@@ -62,9 +58,13 @@ touch my_first_slurm_script.slurm
 > [!IMPORTANT]  
 > Who can tell me the difference between the interactive and non-interactive nodes on the Yens?
 
-4. Populate your `.slurm` script with the following content (remember to update the line with `--mail-user` with your Stanford email address): 
+4. If you didn't yesterday, create a `log` directory in which we'll write output files from our SLURM scripts (we use these to see whether a job ran as expected):
+```bash 
+mkdir logs
+```
 
-<!-- TODO: Figure out the correct file structure here -->
+5. Populate your `.slurm` script with the following content (remember to update the line with `--mail-user` with your Stanford email address): 
+
 ```bash
 #!/bin/bash
 #SBATCH --job-name=my-first-job
@@ -88,27 +88,12 @@ python scripts/extract_form_3_one_file.py
 > [!IMPORTANT]  
 > Can someone explain to me what each section here does?
 
-5. Create a `logs` subdirectory **within** your `slurm` directory. We'll save the outputs from our SLURM jobs to this `logs` subdirectory so we can verify the job's outputs if it ran successfully (or else see where it went wrong).
+
 6. We're now ready to submit our job to the Yens via SLURM. To do so, run 
 ```bash
 sbatch my_first_slurm_script.slurm
 ```
-Navigate to the `logs` subdirectory and inspect the output file (either in Jupyter, or in the command line using `cat <insert-name-of-output-file>.out`). Once you've verified that the job ran successfully, please put a green sticky note (🟩) on the back of your laptop.
-
-<!-- **If you need to clone the repository again**, run the snippet below _in your home directory_:
-```bash
-git clone https://github.com/gsbdarc/rf_bootcamp_2025.git
-```
-3. Activate the virtual environment you created yesterday:
-```bash
-source venv/bin/activate
-```
-**If you need to create your virtual environment again**, run: 
-```bash
-/usr/bin/python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-``` -->
+Navigate to the `logs` subdirectory and inspect the output file (either in Jupyter, or in the command line using `cat <insert-name-of-output-file>.out`). Once you've verified that the job ran successfully, please put a green sticky note 🟩 on the back of your laptop.
 
 ### Common Pitfalls We Saw
 
@@ -141,7 +126,7 @@ We saw in the previous example that paths are really important, and that they ca
 What are some ways we can make projects easy to navigate, understand, and keep tidy? 
 
 > [!IMPORTANT]  
-> Remember: Understanding your past self's work can be as difficult as understanding someone else's work.
+> Remember: Understanding your past self's work can be as difficult as understanding someone else's work. Make it easy for yourself and others.
 
 Consider the following set of files (taking from our `rf_bootcamp_2025/exercises` subdirectory): 
 ```bash 
@@ -161,6 +146,7 @@ How would you organize them?
 
 > [!NOTE]
 > Note that there is no one "correct" way to organize a project. But there _are_ good conventions.
+
 <!-- 
 Here is a directory structure for this project:
 
@@ -206,37 +192,36 @@ import os
 import requests
 import pandas as pd
 
-# URL to your filing
 filing_url = "https://rf-bootcamp-2025.s3.us-west-2.amazonaws.com/Form3_files/0000003570-22-000041.txt"
 
-# Request the filing from the URL
 response = requests.get(filing_url)
 
-# Get the text from the filing request response
 filing_text = response.text
 
-# Check if the filing is relevant to the pharmaceuticals industry
 if "pharma" in filing_text.lower():
     print(f"Filing at {filing_url} relates to the pharma industry.")
 ```
 
+> [!NOTE]
+> Can someone walk us through what this file is doing?
+
 **Questions for you:**
 1. How is this script useful, even if it doesn't let us extract information from more than one SEC filing?
-2. What might be one way to change our script so that it processes multiple files?
+2. What might be one way to change our script so that it processes multiple files? **Let's write out the modifications in pseudocode.**
 3. Imagine you want to submit our modified Python script to run non-interactively on the Yens? Do we need to change our SLURM script, and how?
 <!-- 4. What might go wrong with our modified Python script? Are we using all the computing resources available to us? -->
 
 > [!NOTE]
 > Let's talk about this together, live.
 
-Run the modified script. What happens?
+Let's run the modified script. What happens?
 
 ### Building In Fault Tolerance
 
 In a script like the one we wrote above, if something fails, we lose all our progress.
 That's OK in our toy example, but imagine you had a job that had been running for a week before failing. That's a lot of lost time and progress.
 
-1. How might we avoid that outcome?
+1. How might we avoid that outcome? **There are three main things we can think about.**
 2. What happens when we run our modified script?
 <!-- 
 Looking to hear things like:
@@ -247,6 +232,8 @@ Looking to hear things like:
 
  > [!NOTE]
 > Let's talk about this together, live.
+
+What happens when we run our modified script?
 
 ### Moving On From Sequential Processing
 
@@ -260,8 +247,8 @@ However, our code and workflow can still be improved. What's less-than-optimal a
 * Are we using the Yens' resources effectively?
 * Does our problem have a common structure we can exploit?
 
- > [!NOTE]
-> Let's talk about this together, live.
+> [!NOTE]
+> Let's talk about this together, live. We'll draw a graphic to illustrate what we can do differently.
 
 Now let's look at an example script that addresses these points.
 We'll need two components: an **adapted** Python script, and a corresponding SLURM script.
@@ -275,14 +262,34 @@ We'll need two components: an **adapted** Python script, and a corresponding SLU
 > * In our example, we assumed we have one array job per filing URL. In practice, it may be more efficient to process several URLs together for one individual array job.
 > * As we've written it, our code spits out one output file per array job. In practice, you still need to combine these into one single data output, ideally using an additional script you'll have to write.
 
+## Sharing Your Work & Results
 
-### Copy Results and Document Your Work
-Exercise:
- 
-- Use `scp` to copy your `results` directory back to your laptop.
-- Write a short `README.md` describing:
+OK! We've now processed a bunch of SEC filings, and have determined for each one whether it relates to the pharmaceuticals industry. 
 
-  - What the pipeline does
-  - How it runs (Slurm + Python)
-  - Where the results go
-  - How to rerun it with new data
+> [!NOTE]
+> What's left for us to do?
+
+### Copying Results
+
+To make things easy for you, we've put the results from processing our SEC filings on a shared folder on the Yens:
+```bash
+TODO!
+```
+You want to copy these results onto your local machine to share the results with your advisor. How do you do it?
+
+> [!TIP]
+> Remember: Where do we run commands for copying from?
+
+### Communicating Your Work
+
+Finally, your advisor (who hasn't been keeping up with your progress, alas) wants to understand the code you've written, to make sure that everything makes sense.
+
+We've already created a `README.md` document for you to edit in the repository you cloned yesterday.
+Your job is to edit that document, and fill in the following details so it's easy for your advisor (or your future self) to understand your work:
+* What does your SEC filing pipeline do?
+* How can someone run it?
+* Where are the results are saved?
+* If we get new SEC filings data, how should someone update and re-run the pipeline?
+
+When you're done, please put a green sticky note 🟩 on the back of your laptop so we know you're done. 
+
