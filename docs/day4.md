@@ -275,7 +275,7 @@ OK! We've now processed a bunch of SEC filings, and have determined for each one
 
 To make things easy for you, we've put the results from processing our SEC filings on a shared folder on the Yens:
 ```bash
-TODO!
+/scratch/shared/rf_bootcamp_2025/pharma_relevant_filings.json
 ```
 You want to copy these results onto your local machine to share the results with your advisor. How do you do it?
 
