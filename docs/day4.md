@@ -222,35 +222,25 @@ if "pharma" in filing_text.lower():
 
 **Questions for you:**
 1. How is this script useful, even if it doesn't let us extract information from more than one SEC filing?
-2. How do we need to change it to process multiple files?
+2. What might be one way to change our script so that it processes multiple files?
 3. Imagine you want to submit our modified Python script to run non-interactively on the Yens? Do we need to change our SLURM script, and how?
-4. What might go wrong with our modified Python script? Are we using all the computing resources available to us?
+<!-- 4. What might go wrong with our modified Python script? Are we using all the computing resources available to us? -->
 
 Run the modified script. What happens?
 
+### Building In Fault Tolerance
 
-### Single File Processing for Testing and Debugging
+In a script like the one we wrote above, if something fails, we lose all our progress.
+That's OK in our toy example, but imagine you had a job that had been running for a week before failing. That's a lot of lost time and progress.
 
-- Script: `extract_form_3_one_file.py`
-- Slurm job: `extract_form_3_one_file.slurm`
-- Processes one file.
-- Great for testing your code and debugging errors.
+How might we avoid that outcome?
+<!-- 
+Looking to hear things like:
+1. Saving outputs intermittently 
+2. Skipping over already processed inputs
+ -->
 
-Excercise: 
 
-- Discuss what happens if you need to process 1,000 files.
-
-### Sequential Processing: One Job Handles Many Files
-
-- Script: `extract_form_3_batch.py`
-- Slurm job: `extract_form_3_batch.slurm`
-- Loop over multiple files inside one Python job.
-
-Exercise: 
-
-- Discuss what happens if the job fails partway through.
-
-### Checkpointing for Fault Tolerance
 
 - Script: `extract_form_3_batch_checkpoint.py`
 - Slurm job: `extract_form_3_batch_checkpoint.slurm`
