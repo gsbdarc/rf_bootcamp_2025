@@ -303,7 +303,7 @@ module avail # List all available modules on the Yens
 The `scp` command allows you to securely copy files between your local machine and the Yens.
 
 ```bash
-scp /path/to/local/technical_data_important.zip <SUNetID>@yen.stanford.edu:/
+scp /path/to/local/technical_data_important.zip <SUNetID>@yen.stanford.edu:~
 ```
 
 - Also copy the unzipped folder `technical_data_important/` to the Yens.
