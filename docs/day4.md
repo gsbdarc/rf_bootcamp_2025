@@ -52,7 +52,7 @@ cd rf_bootcamp_2025/exercises
 ```bash
 mkdir slurm
 ``` -->
-<!-- TODO: Add `hint` style blocks on the website to pause for questions -->
+
 3. **Inside** the `slurm` directory, create a SLURM script called `my_first_slurm_script.slurm` that we'll use to run code **non-interactively** on the Yens. If you're in Jupyter, you can do this by creating a file using the graphical user interface. Alternately, you can run the following from within the `slurm` directory you just created.
 ```bash
 touch my_first_slurm_script.slurm
@@ -195,6 +195,88 @@ exercises/
 └── README.md              # Short project documentation
 ``` -->
 
+## Scaling Up Our Workloads 
+So far, we've asked you to write code to extract information from a single SEC file. But what if constructing a dataset for your advisor requires extracting information from 100s, or 1000s?
+
+Let's go back to the script we asked you to write on Day 2: 
+
+```python
+import os
+from openai import OpenAI
+from pydantic import BaseModel
+from typing import List
+from dotenv import load_dotenv
+
+# Path to your filing
+filing_path = "/zfs/data/NODR/EDGAR_HTTPS/edgar/data/1656998/0000950103-24-000077.txt"
+
+with open(filing_path, "r") as f:
+    filing_text = f.read()
+
+# Load environment variables
+load_dotenv('/scratch/shared/rf_bootcamp_2025/.env')
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+# Define your Pydantic model for GPT response
+class Form3Filing(BaseModel):
+    insider_name: str
+    insider_role: List[str]
+    company_name: str
+    company_cik: str
+    filing_date: str
+
+# Prompts
+system_prompt = """
+You are a data extraction agent for SEC Form 3 filings.
+
+Extract the following fields:
+
+- insider_name: The name of the insider (from reportingOwner or anywhere in the document).
+- insider_role: A list of roles the insider holds (Director, Officer, 10% Owner, Other).
+- company_name: The issuer's company name.
+- company_cik: The CIK number of the issuer (from issuerCik or COMPANY DATA).
+- filing_date: The filing date (prefer signatureDate or FILED AS OF DATE).
+
+Return valid JSON matching the provided Pydantic model.
+"""
+
+user_prompt = filing_text
+
+# Call OpenAI
+response = client.responses.parse(
+    model="gpt-4.1-nano",
+    input=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt}
+    ],
+    text_format=Form3Filing,
+)
+
+output_parsed = response.output_parsed
+
+print(output_parsed.model_dump())
+```
+
+**Questions for you:**
+1. How is this script useful, even if it doesn't let us extract information from more than one SEC filing?
+2. How do we need to change it to process multiple files?
+<!-- 
+1. Need to specify the set of files we care about
+2. Need to specify where to save our results once we're done with one file
+
+For the first part, use 
+
+# Specify which directory we're working from 
+PROJ_DIR = "{os.getenv('HOME')}/rf_bootcamp_2025/exercises"
+# Specify where to save our results
+os.makedirs(f"{PROJ_DIR}/results", exist_ok=True)
+
+# Specify our output file path (single master file)
+master_json_path = f"{PROJ_DIR}/results/parsed_form3.json"
+
+# Keep track of results file-by-file 
+master_data = {}
+ -->
 
 ### Single File Processing for Testing and Debugging
 
