@@ -77,13 +77,10 @@ mkdir logs
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=<insert-your-email>@stanford.edu
 
-# Navigate to your project
 cd $HOME/rf_bootcamp_2025/exercises
 
-# Activate your virtual environment 
 source venv/bin/activate
 
-# Call the main Python script we want to run 
 python scripts/extract_form_3_one_file.py
 ```
 
@@ -130,7 +127,7 @@ What are some ways we can make projects easy to navigate, understand, and keep t
 {: .important }
 > Remember: Understanding your past self's work can be as difficult as understanding someone else's work. Make it easy for yourself and others.
 
-Consider the following set of files (taking from our `rf_bootcamp_2025/exercises` subdirectory): 
+Consider the following set of files (taken from our `rf_bootcamp_2025/exercises` subdirectory): 
 ```bash 
 extract_form_3_one_file.py
 form_3_10.csv
@@ -225,12 +222,6 @@ That's OK in our toy example, but imagine you had a job that had been running fo
 
 * How might we avoid that outcome? **There are three main things we can think about.**
 * What happens when we run our modified script?
-<!-- 
-Looking to hear things like:
-1. Saving outputs intermittently 
-2. Skipping over already processed inputs
-3. Can also use control flow like `try` and `except`
- -->
 
 {: .note }
 > Let's talk about this together, live.
