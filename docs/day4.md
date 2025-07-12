@@ -60,7 +60,7 @@ touch my_first_slurm_script.slurm
 {: .note }
 > Who can tell me the difference between the interactive and non-interactive nodes on the Yens?
 
-* If you didn't yesterday, create a `log` directory in which we'll write output files from our SLURM scripts (we use these to see whether a job ran as expected):
+* If you didn't yesterday, create a `logs` directory in which we'll write output files from our SLURM scripts (we use these to see whether a job ran as expected):
 ```bash 
 mkdir logs
 ```
